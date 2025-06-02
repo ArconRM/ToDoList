@@ -1,0 +1,6 @@
+
+.DS_Store
+/Pods
+/ToDoList.xcworkspace
+ToDoList.xcodeproj/xcuserdata
+ToDoList.xcodeproj/xcshareddata
