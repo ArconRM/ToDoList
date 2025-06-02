@@ -74,4 +74,14 @@ class MainInteractor: MainInteractorProtocol {
             }
         }
     }
+    
+    func toggleIsChecked(for toDo: ToDo) throws {
+        var updatedToDo = toDo
+        updatedToDo.isCompleted.toggle()
+        try toDoPersistenceManager.updateToDo(updatedToDo)
+    }
+    
+    func deleteToDo(toDo: ToDo) throws {
+        try toDoPersistenceManager.deleteToDo(id: toDo.id)
+    }
 }

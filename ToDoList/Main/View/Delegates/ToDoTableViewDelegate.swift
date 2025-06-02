@@ -10,6 +10,8 @@ import UIKit
 
 class ToDoTableViewDelegate: NSObject {
     
+    weak var cellDelegate: ToDoTableViewCellDelegate?
+    
     static let estimatedRowHeight: CGFloat = 170
     
     var items: [ToDo] = []
@@ -56,6 +58,7 @@ extension ToDoTableViewDelegate: UITableViewDataSource {
         
         cell.configure(item: filteredItems[indexPath.section])
         cell.backgroundColor = .clear
+        cell.delegate = cellDelegate
 
         return cell
     }

@@ -8,6 +8,8 @@
 import Foundation
 
 protocol MainPresenterProtocol: BasePresenterProtocol {
-    func fetchSavedToDos()
-    func fetchNetworkToDos()
+    func fetchAllToDos()
+    func toggleIsCompleted(for toDo: ToDo)
+    func deleteToDo(toDo: ToDo)
+    func showEditToDo(toDo: ToDo)
 }

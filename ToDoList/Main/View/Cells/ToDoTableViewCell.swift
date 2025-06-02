@@ -9,10 +9,15 @@ import Foundation
 import UIKit
 
 class ToDoTableViewCell: UITableViewCell {
+    
+    var delegate: ToDoTableViewCellDelegate?
+    
     // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
+        let interaction = UIContextMenuInteraction(delegate: self)
+                addInteraction(interaction)
     }
 
     required init?(coder: NSCoder) {
@@ -28,7 +33,13 @@ class ToDoTableViewCell: UITableViewCell {
         contentView.addSubview(labelsVStack)
         contentView.addSubview(isCheckedButton)
         
+        isCheckedButton.addTarget(self, action: #selector(didTapIsChecked), for: .touchUpInside)
+
         setupConstraints()
+    }
+    
+    @objc private func didTapIsChecked() {
+        delegate?.didToggleCheckmark(on: self)
     }
 
     private func setupConstraints() {
@@ -78,9 +89,15 @@ class ToDoTableViewCell: UITableViewCell {
     // MARK: - Data Methods
     override func prepareForReuse() {
         super.prepareForReuse()
+        
+        titleLabel.attributedText = nil
         titleLabel.text = nil
+        descriptionLabel.attributedText = nil
         descriptionLabel.text = nil
         dateLabel.text = nil
+        
+        titleLabel.textColor = .label
+        descriptionLabel.textColor = .label
         
         let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .light)
         let image = UIImage(systemName: "circle", withConfiguration: config)
@@ -98,6 +115,34 @@ class ToDoTableViewCell: UITableViewCell {
             let image = UIImage(systemName: "checkmark.circle", withConfiguration: config)
             isCheckedButton.setImage(image, for: .normal)
             isCheckedButton.tintColor = .systemYellow
+            
+            titleLabel.textColor = .systemGray
+            descriptionLabel.textColor = .systemGray
+            
+            titleLabel.setStrikethrough(text: titleLabel.text ?? "")
+        }
+    }
+}
+
+extension ToDoTableViewCell: UIContextMenuInteractionDelegate {
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
+                              configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+            let edit = UIAction(title: "Редактировать", image: UIImage(systemName: "pencil")) { [weak self] _ in
+                guard let self = self else { return }
+                self.delegate?.didTapEdit(on: self)
+            }
+            
+            let share = UIAction(title: "Поделиться", image: UIImage(systemName: "square.and.arrow.up")) { _ in
+                
+            }
+            
+            let delete = UIAction(title: "Удалить", image: UIImage(systemName: "trash"), attributes: .destructive) { [weak self] _ in
+                guard let self = self else { return }
+                self.delegate?.didTapDelete(on: self)
+            }
+            
+            return UIMenu(title: "", children: [edit, share, delete])
         }
     }
 }
