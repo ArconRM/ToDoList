@@ -76,6 +76,18 @@ class ToDoTableViewCell: UITableViewCell {
     }()
     
     // MARK: - Data Methods
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel.text = nil
+        descriptionLabel.text = nil
+        dateLabel.text = nil
+        
+        let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .light)
+        let image = UIImage(systemName: "circle", withConfiguration: config)
+        isCheckedButton.setImage(image, for: .normal)
+        isCheckedButton.tintColor = .systemGray
+    }
+    
     func configure(item: ToDo) {
         titleLabel.text = item.title
         descriptionLabel.text = item.description
