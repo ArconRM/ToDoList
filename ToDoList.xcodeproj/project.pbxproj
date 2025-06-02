@@ -36,6 +36,11 @@
 		169D89E62DEDA7D0006CBEF9 /* AssemblyMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D89E52DEDA7D0006CBEF9 /* AssemblyMock.swift */; };
 		16A0CA362DEDC49600C3B858 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0CA352DEDC49600C3B858 /* MainRouter.swift */; };
 		16A0CA3A2DEDCD4100C3B858 /* ToDoListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0CA392DEDCD4100C3B858 /* ToDoListDTO.swift */; };
+		16A0CA3D2DEDE46400C3B858 /* ToDoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 16A0CA3B2DEDE46400C3B858 /* ToDoModel.xcdatamodeld */; };
+		16A0CA3F2DEDE85000C3B858 /* ToDoPersistenceManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0CA3E2DEDE85000C3B858 /* ToDoPersistenceManagerProtocol.swift */; };
+		16A0CA412DEDE86B00C3B858 /* ToDoCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0CA402DEDE86B00C3B858 /* ToDoCoreDataManager.swift */; };
+		16A0CA432DEDE9F500C3B858 /* ToDoEntity+DTOConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0CA422DEDE9F500C3B858 /* ToDoEntity+DTOConversion.swift */; };
+		16A0CA452DEDEAE700C3B858 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0CA442DEDEAE700C3B858 /* UserDefaultsKeys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +75,11 @@
 		169D89E52DEDA7D0006CBEF9 /* AssemblyMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyMock.swift; sourceTree = "<group>"; };
 		16A0CA352DEDC49600C3B858 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		16A0CA392DEDCD4100C3B858 /* ToDoListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListDTO.swift; sourceTree = "<group>"; };
+		16A0CA3C2DEDE46400C3B858 /* ToDoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoModel.xcdatamodel; sourceTree = "<group>"; };
+		16A0CA3E2DEDE85000C3B858 /* ToDoPersistenceManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoPersistenceManagerProtocol.swift; sourceTree = "<group>"; };
+		16A0CA402DEDE86B00C3B858 /* ToDoCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCoreDataManager.swift; sourceTree = "<group>"; };
+		16A0CA422DEDE9F500C3B858 /* ToDoEntity+DTOConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoEntity+DTOConversion.swift"; sourceTree = "<group>"; };
+		16A0CA442DEDEAE700C3B858 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +222,10 @@
 		169D89B12DED929B006CBEF9 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				16A0CA3B2DEDE46400C3B858 /* ToDoModel.xcdatamodeld */,
+				16A0CA3E2DEDE85000C3B858 /* ToDoPersistenceManagerProtocol.swift */,
+				16A0CA402DEDE86B00C3B858 /* ToDoCoreDataManager.swift */,
+				16A0CA422DEDE9F500C3B858 /* ToDoEntity+DTOConversion.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -244,6 +258,7 @@
 			children = (
 				169D89D12DEDA093006CBEF9 /* FontSizes.swift */,
 				169D89DB2DEDA593006CBEF9 /* CellIdentifiers.swift */,
+				16A0CA442DEDEAE700C3B858 /* UserDefaultsKeys.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -374,12 +389,15 @@
 				169D89E62DEDA7D0006CBEF9 /* AssemblyMock.swift in Sources */,
 				169D89E22DEDA6D5006CBEF9 /* Assembly.swift in Sources */,
 				169D89BC2DED96B0006CBEF9 /* ToDo.swift in Sources */,
+				16A0CA452DEDEAE700C3B858 /* UserDefaultsKeys.swift in Sources */,
+				16A0CA412DEDE86B00C3B858 /* ToDoCoreDataManager.swift in Sources */,
 				169D89DA2DEDA4FE006CBEF9 /* ToDoTableViewDelegate.swift in Sources */,
 				16A0CA362DEDC49600C3B858 /* MainRouter.swift in Sources */,
 				169D89BA2DED9479006CBEF9 /* ToDoUrlSource.swift in Sources */,
 				169D89AC2DEC56F0006CBEF9 /* ToDoDTO.swift in Sources */,
 				169D89AD2DEC56F0006CBEF9 /* AppDelegate.swift in Sources */,
 				169D89B82DED9421006CBEF9 /* ToDoUrlSourceProtocol.swift in Sources */,
+				16A0CA432DEDE9F500C3B858 /* ToDoEntity+DTOConversion.swift in Sources */,
 				169D89DE2DEDA68E006CBEF9 /* AssemblyProtocol.swift in Sources */,
 				169D89BE2DED97AF006CBEF9 /* MainPresenter.swift in Sources */,
 				169D89AE2DEC56F0006CBEF9 /* SceneDelegate.swift in Sources */,
@@ -391,8 +409,10 @@
 				169D89B62DED9388006CBEF9 /* ToDoNetworkService.swift in Sources */,
 				169D89C22DED98B4006CBEF9 /* MainInteractorProtocol.swift in Sources */,
 				169D89C02DED97B8006CBEF9 /* MainPresenterProtocol.swift in Sources */,
+				16A0CA3D2DEDE46400C3B858 /* ToDoModel.xcdatamodeld in Sources */,
 				169D89D42DEDA0EB006CBEF9 /* LabelFactory.swift in Sources */,
 				169D89C62DED9CC4006CBEF9 /* MainViewProtocol.swift in Sources */,
+				16A0CA3F2DEDE85000C3B858 /* ToDoPersistenceManagerProtocol.swift in Sources */,
 				169D89CD2DED9E7A006CBEF9 /* BasePresenterProtocol.swift in Sources */,
 				169D89CF2DEDA010006CBEF9 /* ToDoTableViewCell.swift in Sources */,
 				169D89D22DEDA093006CBEF9 /* FontSizes.swift in Sources */,
@@ -632,6 +652,19 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCVersionGroup section */
+		16A0CA3B2DEDE46400C3B858 /* ToDoModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				16A0CA3C2DEDE46400C3B858 /* ToDoModel.xcdatamodel */,
+			);
+			currentVersion = 16A0CA3C2DEDE46400C3B858 /* ToDoModel.xcdatamodel */;
+			path = ToDoModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 169D89642DEC500D006CBEF9 /* Project object */;
 }

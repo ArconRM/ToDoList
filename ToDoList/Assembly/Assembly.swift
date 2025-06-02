@@ -14,7 +14,8 @@ struct Assembly: AssemblyProtocol {
             interactor: MainInteractor(
                 toDoNetworkService: ToDoNetworkService(
                     urlSource: ToDoUrlSource()
-                )
+                ),
+                toDoPersistenceManager: ToDoCoreDataManager()
             ),
             router: MainRouter(
                 navigationController: UINavigationController(),

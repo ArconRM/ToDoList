@@ -8,6 +8,5 @@
 import Foundation
 
 protocol MainInteractorProtocol {
-    func fetchSavedToDos(completion: @escaping (Result<[ToDo], Error>) -> Void)
-    func fetchNetworkToDos(completion:  @escaping (Result<[ToDo], Error>) -> Void)
+    func fetchToDos(completion:  @escaping (Result<[ToDo], Error>) -> Void)
 }
