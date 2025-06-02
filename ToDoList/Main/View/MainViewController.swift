@@ -144,7 +144,13 @@ class MainViewController: UIViewController, MainViewProtocol {
 
 extension MainViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else { return }
+        toDoTableViewDelegate?.filterItems(with: searchText)
+        toDoTableView.reloadData()
+        toDoTableView.layoutIfNeeded()
         
+        let count = toDoTableViewDelegate?.filteredItems.count ?? 0
+        toolbarLabel.text = "\(count) задач"
     }
 }
 
