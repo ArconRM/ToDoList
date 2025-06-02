@@ -13,16 +13,31 @@ class ToDoTableViewDelegate: NSObject {
     static let estimatedRowHeight: CGFloat = 170
     
     var items: [ToDo] = []
-//    weak var selectionDelegate: UITableViewSelectionDelegate?
+    var filteredItems: [ToDo] = []
+    private var isSearching = false
     
     func setItems(items: [ToDo]) {
         self.items = items
+        self.filteredItems = items
+    }
+    
+    func filterItems(with searchText: String) {
+        if searchText.isEmpty {
+            filteredItems = items
+            isSearching = false
+        } else {
+            filteredItems = items.filter {
+                $0.title.lowercased().contains(searchText.lowercased()) ||
+                $0.description.lowercased().contains(searchText.lowercased())
+            }
+            isSearching = true
+        }
     }
 }
 
 extension ToDoTableViewDelegate: UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return items.count
+        return filteredItems.count
     }
 
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -39,7 +54,7 @@ extension ToDoTableViewDelegate: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.toDoCell.rawValue, for: indexPath) as! ToDoTableViewCell
         
-        cell.configure(item: items[indexPath.section])
+        cell.configure(item: filteredItems[indexPath.section])
         cell.backgroundColor = .clear
 
         return cell
