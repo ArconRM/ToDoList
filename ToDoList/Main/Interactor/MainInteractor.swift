@@ -7,30 +7,70 @@
 
 import Foundation
 
-struct MainInteractor: MainInteractorProtocol {
+class MainInteractor: MainInteractorProtocol {
     
     private let toDoNetworkService: ToDoNetworkServiceProtocol
+    private let toDoPersistenceManager: ToDoPersistenceManagerProtocol
     
-    init(toDoNetworkService: ToDoNetworkServiceProtocol) {
+    private var wasLaunched: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: UserDefaultsKeys.wasLaunched.rawValue)
+        } set {
+            UserDefaults.standard.set(newValue, forKey: UserDefaultsKeys.wasLaunched.rawValue)
+        }
+    }
+    
+    init(toDoNetworkService: ToDoNetworkServiceProtocol, toDoPersistenceManager: ToDoPersistenceManagerProtocol) {
         self.toDoNetworkService = toDoNetworkService
+        self.toDoPersistenceManager = toDoPersistenceManager
     }
     
-    func fetchSavedToDos(completion: @escaping (Result<[ToDo], Error>) -> Void) {
-        completion(.failure(NSError(domain: "", code: 0)))
+    func fetchToDos(completion: @escaping (Result<[ToDo], Error>) -> Void) {
+        if !wasLaunched {
+            var networkToDos: [ToDo] = []
+            fetchNetworkToDos() { result in
+                switch result {
+                case .success(let toDos):
+                    networkToDos = toDos
+                    
+                    do {
+                        try self.toDoPersistenceManager.saveToDos(networkToDos)
+                    } catch(let error) {
+                        completion(.failure(error))
+                    }
+                    
+                    print("fetched from network")
+                    
+                    self.wasLaunched = true
+                    
+                    completion(.success(networkToDos))
+                    
+                case .failure(let failure):
+                    completion(.failure(failure))
+                }
+            }
+            
+        } else {
+            do {
+                let toDos = try toDoPersistenceManager.loadAllToDos()
+                
+                print("fetched from core data")
+                
+                completion(.success(toDos))
+            } catch(let error) {
+                completion(.failure(error))
+            }
+        }
     }
     
-    func fetchNetworkToDos(completion: @escaping (Result<[ToDo], Error>) -> Void) {
-        toDoNetworkService.fetchAllToDos(resultQueue: DispatchQueue.main) { result in
+    private func fetchNetworkToDos(completion: @escaping (Result<[ToDo], Error>) -> Void) {
+        toDoNetworkService.fetchAllToDos(resultQueue: DispatchQueue.global(qos: .background)) { result in
             switch result {
             case .failure(let error):
-                DispatchQueue.main.async {
-                    completion(.failure(error))
-                }
-                              
+                completion(.failure(error))
+                
             case .success(let toDosDto):
-                DispatchQueue.main.async {
-                    completion(.success(toDosDto.map({ ToDo(dto: $0) })))
-                }
+                completion(.success(toDosDto.map({ ToDo(dto: $0) })))
             }
         }
     }

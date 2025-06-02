@@ -14,7 +14,19 @@ protocol ErrorPresentable {
 
 extension ErrorPresentable where Self: UIViewController {
     func showError(_ error: Error) {
-        let alertController = UIAlertController(title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert)
+        let alertController = UIAlertController(
+            title: "Ошибка",
+            message: error.localizedDescription,
+            preferredStyle: .alert
+        )
+        
+        let okAction = UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: nil
+        )
+        
+        alertController.addAction(okAction)
         present(alertController, animated: true)
     }
 }

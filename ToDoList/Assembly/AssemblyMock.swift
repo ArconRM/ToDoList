@@ -12,7 +12,8 @@ struct AssemblyMock: AssemblyProtocol {
     func buildMainViewController() -> MainViewController {
         let presenter = MainPresenter(
             interactor: MainInteractor(
-                toDoNetworkService: ToDoNetworkServiceMock()
+                toDoNetworkService: ToDoNetworkServiceMock(),
+                toDoPersistenceManager: ToDoCoreDataManager()
             ),
             router: MainRouter(
                 navigationController: UINavigationController(),

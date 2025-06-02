@@ -27,12 +27,13 @@ class MainPresenter: MainPresenterProtocol {
     }
     
     func fetchNetworkToDos() {
-        interactor.fetchNetworkToDos { [weak self] result in
+        interactor.fetchToDos { [weak self] result in
             switch result {
             case .success(let toDos):
-                self?.view?.loadedAllToDos(toDos)
+                
+                DispatchQueue.main.async { self?.view?.loadedAllToDos(toDos) }
             case .failure(let failure):
-                self?.view?.showError(failure)
+                DispatchQueue.main.async { self?.view?.showError(failure) }
             }
         }
     }
