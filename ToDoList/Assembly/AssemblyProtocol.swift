@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import UIKit
 
 protocol AssemblyProtocol {
-    func buildMainViewController() -> MainViewController
+    func buildMainViewController(navigationController: UINavigationController) -> MainViewController
+    func buildEditToDoViewController(toDo: ToDo) -> EditToDoViewController
 }

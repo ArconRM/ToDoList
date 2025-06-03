@@ -10,6 +10,7 @@ import CoreData
 import UIKit
 
 struct ToDoCoreDataManager: ToDoPersistenceManagerProtocol {
+
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     func saveToDo(_ toDo: ToDo) throws {
@@ -25,6 +26,32 @@ struct ToDoCoreDataManager: ToDoPersistenceManagerProtocol {
     }
     
     func loadAllToDos() throws -> [ToDo] {
-        return try context.fetch(ToDoEntity.fetchRequest()).map({ $0.toDomain() })
+        let fetchRequest: NSFetchRequest<ToDoEntity> = ToDoEntity.fetchRequest()
+        return try context.fetch(fetchRequest).map({ $0.toDomain() })
+    }
+    
+    func updateToDo(_ updatedToDo: ToDo) throws {
+        let fetchRequest: NSFetchRequest<ToDoEntity> = ToDoEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %d", updatedToDo.id)
+        
+        if let toDoEntity = try context.fetch(fetchRequest).first {
+            toDoEntity.title = updatedToDo.title
+            toDoEntity.toDoDescription = updatedToDo.description
+            toDoEntity.isCompleted = updatedToDo.isCompleted
+            toDoEntity.userId = Int64(updatedToDo.userId)
+            toDoEntity.dateCreated = updatedToDo.dateCreated
+            
+            try context.save()
+        }
+    }
+    
+    func deleteToDo(id: Int) throws {
+        let fetchRequest: NSFetchRequest<ToDoEntity> = ToDoEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+        
+        if let toDoEntity = try context.fetch(fetchRequest).first {
+            context.delete(toDoEntity)
+            try context.save()
+        }
     }
 }

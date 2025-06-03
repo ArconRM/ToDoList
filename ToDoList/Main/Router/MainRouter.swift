@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct MainRouter {
+struct MainRouter: MainRouterProtocol {
     weak var view: MainViewProtocol?
     private weak var navigationController: UINavigationController?
     private let assembly: AssemblyProtocol
@@ -19,6 +19,7 @@ struct MainRouter {
     }
     
     func showEditToDoView(toDo: ToDo) {
-        
+        let editToDoViewController = assembly.buildEditToDoViewController(toDo: toDo)
+        navigationController?.pushViewController(editToDoViewController, animated: true)
     }
 }

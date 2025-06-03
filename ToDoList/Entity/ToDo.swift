@@ -19,7 +19,7 @@ struct ToDo: Identifiable {
 extension ToDo {
     init(dto: ToDoDTO) {
         self.id = dto.id
-        self.title = "Название"
+        self.title = "Без названия"
         self.description = dto.todo
         self.isCompleted = dto.completed
         self.userId = dto.userId

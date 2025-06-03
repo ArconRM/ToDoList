@@ -9,6 +9,6 @@ import Foundation
 
 enum FontSizes: CGFloat {
     case small = 16
-    case medium = 18
-    case large = 20
+    case medium = 20
+    case large = 40
 }

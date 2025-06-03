@@ -22,12 +22,21 @@ class MainViewController: UIViewController, MainViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        presenter.fetchAllToDos()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
         
         toDoTableViewDelegate = ToDoTableViewDelegate()
+        toDoTableViewDelegate?.cellDelegate = self
         
         toDoTableView.delegate = toDoTableViewDelegate
         toDoTableView.dataSource = toDoTableViewDelegate
@@ -48,10 +57,8 @@ class MainViewController: UIViewController, MainViewProtocol {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Поиск"
         
-        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Задачи"
         navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
         
         definesPresentationContext = true
     }
@@ -98,7 +105,6 @@ class MainViewController: UIViewController, MainViewProtocol {
             toDoTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-    
     
     // MARK: - UI Elements
     private let searchController = UISearchController(searchResultsController: nil)
@@ -147,10 +153,57 @@ extension MainViewController: UISearchResultsUpdating {
         guard let searchText = searchController.searchBar.text else { return }
         toDoTableViewDelegate?.filterItems(with: searchText)
         toDoTableView.reloadData()
-        toDoTableView.layoutIfNeeded()
+        
+        UIView.animate(withDuration: 0.2) {
+            self.toDoTableView.layoutIfNeeded()
+        }
         
         let count = toDoTableViewDelegate?.filteredItems.count ?? 0
         toolbarLabel.text = "\(count) задач"
+    }
+}
+
+extension MainViewController: ToDoTableViewCellDelegate {
+    func didTapEdit(on cell: ToDoTableViewCell) {
+        guard let indexPath = toDoTableView.indexPath(for: cell),
+              let toDo = toDoTableViewDelegate?.filteredItems[indexPath.section] else { return }
+        
+        presenter.showEditToDo(toDo: toDo)
+    }
+    
+    func didTapDelete(on cell: ToDoTableViewCell) {
+        let alertController = UIAlertController(
+            title: "Удаление",
+            message: "Вы уверены что хотите удалить задачу?",
+            preferredStyle: .alert
+        )
+        
+        let noAction = UIAlertAction(
+            title: "Нет",
+            style: .cancel,
+            handler: nil
+        )
+        
+        let yesAction = UIAlertAction(
+            title: "Да",
+            style: .destructive,
+        ) { [weak self] _ in
+            guard let indexPath = self?.toDoTableView.indexPath(for: cell),
+                  let toDo = self?.toDoTableViewDelegate?.filteredItems[indexPath.section] else { return }
+            
+            self?.presenter.deleteToDo(toDo: toDo)
+        }
+        
+        alertController.addAction(noAction)
+        alertController.addAction(yesAction)
+        present(alertController, animated: true)
+    }
+    
+    func didToggleCheckmark(on cell: ToDoTableViewCell) {
+        guard let indexPath = toDoTableView.indexPath(for: cell),
+              let toDo = toDoTableViewDelegate?.filteredItems[indexPath.section] else { return }
+        
+        presenter.toggleIsCompleted(for: toDo)
     }
 }
 
@@ -158,7 +211,7 @@ extension MainViewController: UISearchResultsUpdating {
 @available(iOS 17, *)
 #Preview {
     let assembly = AssemblyMock()
-    let view = assembly.buildMainViewController()
+    let view = assembly.buildMainViewController(navigationController: UINavigationController())
     return view
 }
 
