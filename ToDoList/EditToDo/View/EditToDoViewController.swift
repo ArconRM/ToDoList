@@ -101,8 +101,6 @@ extension EditToDoViewController: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
-            print("Return key pressed in textView")
-            
             textView.resignFirstResponder()
             
             presenter.updateToDo(title: titleTextView.text, description: descriptionTextView.text)

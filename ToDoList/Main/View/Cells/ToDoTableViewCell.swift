@@ -133,16 +133,12 @@ extension ToDoTableViewCell: UIContextMenuInteractionDelegate {
                 self.delegate?.didTapEdit(on: self)
             }
             
-            let share = UIAction(title: "Поделиться", image: UIImage(systemName: "square.and.arrow.up")) { _ in
-                
-            }
-            
             let delete = UIAction(title: "Удалить", image: UIImage(systemName: "trash"), attributes: .destructive) { [weak self] _ in
                 guard let self = self else { return }
                 self.delegate?.didTapDelete(on: self)
             }
             
-            return UIMenu(title: "", children: [edit, share, delete])
+            return UIMenu(title: "", children: [edit, delete])
         }
     }
 }
