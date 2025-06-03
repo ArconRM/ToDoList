@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		168CE7E92DEF6C7900F1343D /* ToDoNetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168CE7E62DEF6C7900F1343D /* ToDoNetworkServiceProtocol.swift */; };
+		168CE7EA2DEF6C7900F1343D /* ToDoUrlSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168CE7E72DEF6C7900F1343D /* ToDoUrlSourceProtocol.swift */; };
 		169D89A92DEC56F0006CBEF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 169D89A22DEC56F0006CBEF9 /* Assets.xcassets */; };
 		169D89AB2DEC56F0006CBEF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169D89A52DEC56F0006CBEF9 /* LaunchScreen.storyboard */; };
 		169D89AC2DEC56F0006CBEF9 /* ToDoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D899E2DEC56F0006CBEF9 /* ToDoDTO.swift */; };
 		169D89AD2DEC56F0006CBEF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D89A12DEC56F0006CBEF9 /* AppDelegate.swift */; };
 		169D89AE2DEC56F0006CBEF9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D89A62DEC56F0006CBEF9 /* SceneDelegate.swift */; };
-		169D89B42DED9350006CBEF9 /* ToDoNetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D89B32DED9350006CBEF9 /* ToDoNetworkServiceProtocol.swift */; };
 		169D89B62DED9388006CBEF9 /* ToDoNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D89B52DED9388006CBEF9 /* ToDoNetworkService.swift */; };
-		169D89B82DED9421006CBEF9 /* ToDoUrlSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D89B72DED9421006CBEF9 /* ToDoUrlSourceProtocol.swift */; };
 		169D89BA2DED9479006CBEF9 /* ToDoUrlSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D89B92DED9479006CBEF9 /* ToDoUrlSource.swift */; };
 		169D89BC2DED96B0006CBEF9 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D89BB2DED96B0006CBEF9 /* ToDo.swift */; };
 		169D89BE2DED97AF006CBEF9 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D89BD2DED97AF006CBEF9 /* MainPresenter.swift */; };
@@ -54,6 +54,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		168CE7E62DEF6C7900F1343D /* ToDoNetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoNetworkServiceProtocol.swift; sourceTree = "<group>"; };
+		168CE7E72DEF6C7900F1343D /* ToDoUrlSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoUrlSourceProtocol.swift; sourceTree = "<group>"; };
 		169D896C2DEC500D006CBEF9 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		169D899E2DEC56F0006CBEF9 /* ToDoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoDTO.swift; sourceTree = "<group>"; };
 		169D89A12DEC56F0006CBEF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,9 +63,7 @@
 		169D89A32DEC56F0006CBEF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		169D89A42DEC56F0006CBEF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		169D89A62DEC56F0006CBEF9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		169D89B32DED9350006CBEF9 /* ToDoNetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoNetworkServiceProtocol.swift; sourceTree = "<group>"; };
 		169D89B52DED9388006CBEF9 /* ToDoNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoNetworkService.swift; sourceTree = "<group>"; };
-		169D89B72DED9421006CBEF9 /* ToDoUrlSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoUrlSourceProtocol.swift; sourceTree = "<group>"; };
 		169D89B92DED9479006CBEF9 /* ToDoUrlSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoUrlSource.swift; sourceTree = "<group>"; };
 		169D89BB2DED96B0006CBEF9 /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		169D89BD2DED97AF006CBEF9 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
@@ -114,6 +114,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		168CE7E82DEF6C7900F1343D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				168CE7E62DEF6C7900F1343D /* ToDoNetworkServiceProtocol.swift */,
+				168CE7E72DEF6C7900F1343D /* ToDoUrlSourceProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		168CE7EB2DEF6C7F00F1343D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				16A0CA3E2DEDE85000C3B858 /* ToDoPersistenceManagerProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		169D89632DEC500D006CBEF9 = {
 			isa = PBXGroup;
 			children = (
@@ -250,8 +267,8 @@
 		169D89B12DED929B006CBEF9 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				168CE7EB2DEF6C7F00F1343D /* Protocols */,
 				16A0CA3B2DEDE46400C3B858 /* ToDoModel.xcdatamodeld */,
-				16A0CA3E2DEDE85000C3B858 /* ToDoPersistenceManagerProtocol.swift */,
 				16A0CA402DEDE86B00C3B858 /* ToDoCoreDataManager.swift */,
 				16A0CA422DEDE9F500C3B858 /* ToDoEntity+DTOConversion.swift */,
 			);
@@ -261,10 +278,9 @@
 		169D89B22DED92F3006CBEF9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				169D89B32DED9350006CBEF9 /* ToDoNetworkServiceProtocol.swift */,
+				168CE7E82DEF6C7900F1343D /* Protocols */,
 				169D89B52DED9388006CBEF9 /* ToDoNetworkService.swift */,
 				169D89E32DEDA72D006CBEF9 /* ToDoNetworkServiceMock.swift */,
-				169D89B72DED9421006CBEF9 /* ToDoUrlSourceProtocol.swift */,
 				169D89B92DED9479006CBEF9 /* ToDoUrlSource.swift */,
 			);
 			path = Network;
@@ -437,8 +453,9 @@
 				169D89BA2DED9479006CBEF9 /* ToDoUrlSource.swift in Sources */,
 				169D89AC2DEC56F0006CBEF9 /* ToDoDTO.swift in Sources */,
 				169D89AD2DEC56F0006CBEF9 /* AppDelegate.swift in Sources */,
-				169D89B82DED9421006CBEF9 /* ToDoUrlSourceProtocol.swift in Sources */,
 				16A0CA432DEDE9F500C3B858 /* ToDoEntity+DTOConversion.swift in Sources */,
+				168CE7E92DEF6C7900F1343D /* ToDoNetworkServiceProtocol.swift in Sources */,
+				168CE7EA2DEF6C7900F1343D /* ToDoUrlSourceProtocol.swift in Sources */,
 				16A0CA562DEE018F00C3B858 /* MainRouterProtocol.swift in Sources */,
 				16A0CA5A2DEE07F900C3B858 /* ToDoTableViewCellDelegate.swift in Sources */,
 				16A0CA502DEDFD5E00C3B858 /* EditToDoPresenter.swift in Sources */,
@@ -449,7 +466,6 @@
 				169D89CB2DED9DD1006CBEF9 /* MainViewController.swift in Sources */,
 				16A0CA622DEE2CBB00C3B858 /* UILabel+Strikethrough.swift in Sources */,
 				16A0CA3A2DEDCD4100C3B858 /* ToDoListDTO.swift in Sources */,
-				169D89B42DED9350006CBEF9 /* ToDoNetworkServiceProtocol.swift in Sources */,
 				16A0CA4E2DEDFD2400C3B858 /* EditToDoPresenterProtocol.swift in Sources */,
 				16A0CA582DEE036100C3B858 /* TextViewFactory.swift in Sources */,
 				16A0CA4C2DEDFAAD00C3B858 /* EditToDoInteractor.swift in Sources */,

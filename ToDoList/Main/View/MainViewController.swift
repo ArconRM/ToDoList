@@ -13,8 +13,9 @@ class MainViewController: UIViewController, MainViewProtocol {
     private let presenter: MainPresenterProtocol
     private var toDoTableViewDelegate: ToDoTableViewDelegate?
     
-    init(presenter: MainPresenterProtocol) {
+    init(presenter: MainPresenterProtocol, toDoTableViewDelegate: ToDoTableViewDelegate) {
         self.presenter = presenter
+        self.toDoTableViewDelegate = toDoTableViewDelegate
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -35,7 +36,6 @@ class MainViewController: UIViewController, MainViewProtocol {
         
         view.backgroundColor = .systemBackground
         
-        toDoTableViewDelegate = ToDoTableViewDelegate()
         toDoTableViewDelegate?.cellDelegate = self
         
         toDoTableView.delegate = toDoTableViewDelegate

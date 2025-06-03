@@ -21,7 +21,10 @@ struct AssemblyMock: AssemblyProtocol {
             )
         )
         
-        let view = MainViewController(presenter: presenter)
+        let view = MainViewController(
+            presenter: presenter,
+            toDoTableViewDelegate: ToDoTableViewDelegate()
+        )
         
         presenter.view = view
         

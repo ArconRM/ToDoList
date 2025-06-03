@@ -28,6 +28,7 @@ class MainInteractor: MainInteractorProtocol {
     func fetchToDos(completion: @escaping (Result<[ToDo], Error>) -> Void) {
         if !wasLaunched {
             var networkToDos: [ToDo] = []
+            
             fetchNetworkToDos() { result in
                 switch result {
                 case .success(let toDos):

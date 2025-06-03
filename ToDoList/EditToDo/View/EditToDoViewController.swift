@@ -30,6 +30,12 @@ class EditToDoViewController: UIViewController, EditToDoViewProtocol {
         navigationController?.navigationBar.prefersLargeTitles = false
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        presenter.updateToDo(title: titleTextView.text, description: descriptionTextView.text)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -103,7 +109,7 @@ extension EditToDoViewController: UITextViewDelegate {
         if text == "\n" {
             textView.resignFirstResponder()
             
-            presenter.updateToDo(title: titleTextView.text, description: descriptionTextView.text)
+//            presenter.updateToDo(title: titleTextView.text, description: descriptionTextView.text)
             
             return false
         }

@@ -10,10 +10,10 @@ import Foundation
 class MainPresenter: MainPresenterProtocol {
     
     private let interactor: MainInteractorProtocol
-    private let router: MainRouter
+    private let router: MainRouterProtocol
     weak var view: MainViewProtocol?
     
-    init(interactor: MainInteractorProtocol, router: MainRouter) {
+    init(interactor: MainInteractorProtocol, router: MainRouterProtocol) {
         self.interactor = interactor
         self.router = router
     }
