@@ -25,6 +25,23 @@ struct ToDoCoreDataManager: ToDoPersistenceManagerProtocol {
         try context.save()
     }
     
+    func createEmptyToDo() throws -> ToDo {
+        let fetchRequest: NSFetchRequest<ToDoEntity> = ToDoEntity.fetchRequest()
+        let lastId = try context.fetch(fetchRequest).map({ $0.toDomain() }).map({ $0.id }).max() ?? 0
+        
+        let entity = ToDoEntity(context: context)
+        entity.id = Int64(lastId + 1)
+        entity.title = "Без названия"
+        entity.toDoDescription = "Пусто"
+        entity.isCompleted = false
+        entity.userId = 0
+        entity.dateCreated = Date()
+        
+        try context.save()
+        
+        return entity.toDomain()
+    }
+    
     func loadAllToDos() throws -> [ToDo] {
         let fetchRequest: NSFetchRequest<ToDoEntity> = ToDoEntity.fetchRequest()
         return try context.fetch(fetchRequest).map({ $0.toDomain() })

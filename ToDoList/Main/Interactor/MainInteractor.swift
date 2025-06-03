@@ -75,6 +75,10 @@ class MainInteractor: MainInteractorProtocol {
         }
     }
     
+    func createEmptyToDo() throws -> ToDo {
+        return try toDoPersistenceManager.createEmptyToDo()
+    }
+    
     func toggleIsChecked(for toDo: ToDo) throws {
         var updatedToDo = toDo
         updatedToDo.isCompleted.toggle()

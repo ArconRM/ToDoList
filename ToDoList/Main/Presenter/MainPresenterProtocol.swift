@@ -9,6 +9,7 @@ import Foundation
 
 protocol MainPresenterProtocol: BasePresenterProtocol {
     func fetchAllToDos()
+    func createNewToDo()
     func toggleIsCompleted(for toDo: ToDo)
     func deleteToDo(toDo: ToDo)
     func showEditToDo(toDo: ToDo)
