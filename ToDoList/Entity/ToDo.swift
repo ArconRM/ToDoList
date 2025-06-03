@@ -19,6 +19,7 @@ struct ToDo: Identifiable {
 extension ToDo {
     init(dto: ToDoDTO) {
         self.id = dto.id
+        // Поскольку в апи они без названия
         self.title = "Без названия"
         self.description = dto.todo
         self.isCompleted = dto.completed

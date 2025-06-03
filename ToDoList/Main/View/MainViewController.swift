@@ -64,6 +64,8 @@ class MainViewController: UIViewController, MainViewProtocol {
     }
     
     private func setupToolbar() {
+        toolbarButton.addTarget(self, action: #selector(createToDoWasPressed), for: .touchUpInside)
+        
         toolbar.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(toolbar)
 
@@ -86,6 +88,10 @@ class MainViewController: UIViewController, MainViewProtocol {
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
         toolbar.setItems([flexibleSpace, labelItem, flexibleSpace, buttonItem], animated: false)
+    }
+    
+    @objc func createToDoWasPressed() {
+        presenter.createNewToDo()
     }
     
     

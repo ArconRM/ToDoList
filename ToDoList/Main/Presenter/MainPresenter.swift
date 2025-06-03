@@ -26,10 +26,19 @@ class MainPresenter: MainPresenterProtocol {
         interactor.fetchToDos { [weak self] result in
             switch result {
             case .success(let toDos):
-                DispatchQueue.main.async { self?.view?.loadedAllToDos(toDos) }
+                DispatchQueue.main.async { self?.view?.loadedAllToDos(toDos.sorted(by: { $0.dateCreated > $1.dateCreated })) }
             case .failure(let failure):
                 DispatchQueue.main.async { self?.view?.showError(failure) }
             }
+        }
+    }
+    
+    func createNewToDo() {
+        do {
+            let newToDo = try interactor.createEmptyToDo()
+            showEditToDo(toDo: newToDo)
+        } catch(let error) {
+            view?.showError(error)
         }
     }
     
