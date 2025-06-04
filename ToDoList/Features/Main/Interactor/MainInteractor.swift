@@ -27,46 +27,36 @@ final class MainInteractor: MainInteractorProtocol {
     
     func fetchToDos(completion: @escaping (Result<[ToDo], Error>) -> Void) {
         if !wasLaunched {
-            var networkToDos: [ToDo] = []
-            
             fetchNetworkToDos() { result in
                 switch result {
                 case .success(let toDos):
-                    networkToDos = toDos
-                    
-                    do {
-                        try self.toDoPersistenceManager.saveToDos(networkToDos)
-                    } catch(let error) {
-                        completion(.failure(error))
-                        break
+                    DispatchQueue.global(qos: .userInitiated).async {
+                        do {
+                            try self.toDoPersistenceManager.saveToDos(toDos)
+                            completion(.success(toDos))
+                        } catch {
+                            completion(.failure(error))
+                        }
                     }
-                    
-                    print("fetched from network")
-                    
                     self.wasLaunched = true
-                    
-                    completion(.success(networkToDos))
-                    
-                case .failure(let failure):
-                    completion(.failure(failure))
+                case .failure(let error):
+                    completion(.failure(error))
                 }
             }
-            
         } else {
-            do {
-                let toDos = try toDoPersistenceManager.loadAllToDos()
-                
-                print("fetched from core data")
-                
-                completion(.success(toDos))
-            } catch(let error) {
-                completion(.failure(error))
+            DispatchQueue.global(qos: .userInitiated).async {
+                do {
+                    let toDos = try self.toDoPersistenceManager.loadAllToDos()
+                    completion(.success(toDos))
+                } catch {
+                    completion(.failure(error))
+                }
             }
         }
     }
     
     private func fetchNetworkToDos(completion: @escaping (Result<[ToDo], Error>) -> Void) {
-        toDoNetworkService.fetchAllToDos(resultQueue: DispatchQueue.global(qos: .background)) { result in
+        toDoNetworkService.fetchAllToDos(resultQueue: .global(qos: .userInitiated)) { result in
             switch result {
             case .failure(let error):
                 completion(.failure(error))
@@ -77,17 +67,41 @@ final class MainInteractor: MainInteractorProtocol {
         }
     }
     
-    func createEmptyToDo() throws -> ToDo {
-        return try toDoPersistenceManager.createEmptyToDo()
+    func createEmptyToDo(completion: @escaping (Result<ToDo, any Error>) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                let toDo = try self.toDoPersistenceManager.createEmptyToDo()
+                
+                completion(.success(toDo))
+            } catch {
+                completion(.failure(error))
+            }
+        }
     }
     
-    func toggleIsChecked(for toDo: ToDo) throws {
-        var updatedToDo = toDo
-        updatedToDo.isCompleted.toggle()
-        try toDoPersistenceManager.updateToDo(updatedToDo)
+    func toggleIsChecked(for toDo: ToDo, completion: @escaping (Result<Void, any Error>) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                var updatedToDo = toDo
+                updatedToDo.isCompleted.toggle()
+                try self.toDoPersistenceManager.updateToDo(updatedToDo)
+                
+                completion(.success(()))
+            } catch {
+                completion(.failure(error))
+            }
+        }
     }
     
-    func deleteToDo(toDo: ToDo) throws {
-        try toDoPersistenceManager.deleteToDo(id: toDo.id)
+    func deleteToDo(toDo: ToDo, completion: @escaping (Result<Void, any Error>) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                try self.toDoPersistenceManager.deleteToDo(id: toDo.id)
+                
+                completion(.success(()))
+            } catch {
+                completion(.failure(error))
+            }
+        }
     }
 }

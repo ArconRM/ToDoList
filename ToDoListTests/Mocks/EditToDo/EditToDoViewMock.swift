@@ -12,11 +12,16 @@ final class EditToDoViewMock: EditToDoViewProtocol {
     var configuredToDo: ToDo?
     var shownError: Error?
     
+    var onConfiguredToDo: (() -> Void)?
+    var onShowError: (() -> Void)?
+    
     func configureWithItem(_ toDo: ToDo) {
         configuredToDo = toDo
+        onConfiguredToDo?()
     }
     
     func showError(_ error: Error) {
         shownError = error
+        onShowError?()
     }
 }

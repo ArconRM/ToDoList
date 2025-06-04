@@ -51,7 +51,14 @@ final class EditToDoPresenterTests: XCTestCase {
         let error = NSError(domain: "update", code: 1)
         interactor.shouldThrowOnUpdate = error
         
+        let expectation = self.expectation(description: "update failes")
+        view.onShowError = {
+            expectation.fulfill()
+        }
+        
         presenter.updateToDo(title: "Updated title", description: "Updated description")
+        
+        waitForExpectations(timeout: 1.0)
         
         XCTAssertEqual(view.shownError as NSError?, error)
     }

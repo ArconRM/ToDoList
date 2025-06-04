@@ -16,26 +16,38 @@ final class MainInteractorMock: MainInteractorProtocol {
         }
     }
     
-    var createEmptyToDoResult: Result<ToDo, Error>?
-    func createEmptyToDo() throws -> ToDo {
-        switch createEmptyToDoResult {
-        case .success(let toDo): return toDo
-        case .failure(let error): throw error
-        case .none: fatalError("createEmptyToDoResult not set")
+    var createEmptyToDoResult: ToDo?
+    var shouldThrowOnCreate: Error?
+    func createEmptyToDo(completion: @escaping (Result<ToDo, any Error>) -> Void) {
+        if let error = shouldThrowOnCreate {
+            completion(.failure(error))
+        } else if let toDo = createEmptyToDoResult {
+            completion(.success(toDo))
+        } else {
+            fatalError("createEmptyToDoResult not set")
         }
     }
     
     var toggleToDoCalledFor: ToDo?
     var shouldThrowOnToggle: Error?
-    func toggleIsChecked(for toDo: ToDo) throws {
+    func toggleIsChecked(for toDo: ToDo, completion: @escaping (Result<Void, any Error>) -> Void) {
         toggleToDoCalledFor = toDo
-        if let error = shouldThrowOnToggle { throw error }
+        if let error = shouldThrowOnToggle {
+            completion(.failure(error))
+        } else {
+            completion(.success(()))
+        }
     }
+    
     
     var deletedToDo: ToDo?
     var shouldThrowOnDelete: Error?
-    func deleteToDo(toDo: ToDo) throws {
+    func deleteToDo(toDo: ToDo, completion: @escaping (Result<Void, any Error>) -> Void) {
         deletedToDo = toDo
-        if let error = shouldThrowOnDelete { throw error }
+        if let error = shouldThrowOnDelete {
+            completion(.failure(error))
+        } else {
+            completion(.success(()))
+        }
     }
 }

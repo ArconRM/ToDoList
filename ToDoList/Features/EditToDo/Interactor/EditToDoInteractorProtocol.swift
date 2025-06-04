@@ -8,5 +8,5 @@
 import Foundation
 
 protocol EditToDoInteractorProtocol {
-    func updateToDo(toDo: ToDo) throws
+    func updateToDo(toDo: ToDo, completion: @escaping (Result<Void, Error>) -> Void)
 }

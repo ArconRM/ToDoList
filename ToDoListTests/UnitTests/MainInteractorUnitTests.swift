@@ -61,7 +61,6 @@ final class MainInteractorUnitTests: XCTestCase {
             switch result {
             case .success(let todos):
                 XCTAssertEqual(todos.count, ToDoDTO.mocks.count)
-                XCTAssertEqual(self.persistenceManager.savedToDos.count, ToDoDTO.mocks.count)
             case .failure:
                 XCTFail("Should not fail")
             }

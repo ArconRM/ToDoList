@@ -12,8 +12,12 @@ final class EditToDoInteractorMock: EditToDoInteractorProtocol {
     var updatedToDo: ToDo?
     var shouldThrowOnUpdate: Error?
     
-    func updateToDo(toDo: ToDo) throws {
+    func updateToDo(toDo: ToDo, completion: @escaping (Result<Void, any Error>) -> Void) {
         updatedToDo = toDo
-        if let error = shouldThrowOnUpdate { throw error }
+        if let error = shouldThrowOnUpdate {
+            completion(.failure(error))
+        } else {
+            completion(.success(()))
+        }
     }
 }

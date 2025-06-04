@@ -9,7 +9,7 @@ import Foundation
 
 protocol MainInteractorProtocol {
     func fetchToDos(completion: @escaping (Result<[ToDo], Error>) -> Void)
-    func createEmptyToDo() throws -> ToDo
-    func toggleIsChecked(for toDo: ToDo) throws
-    func deleteToDo(toDo: ToDo) throws
+    func createEmptyToDo(completion: @escaping (Result<ToDo, Error>) -> Void)
+    func toggleIsChecked(for toDo: ToDo, completion: @escaping (Result<Void, Error>) -> Void)
+    func deleteToDo(toDo: ToDo, completion: @escaping (Result<Void, Error>) -> Void)
 }

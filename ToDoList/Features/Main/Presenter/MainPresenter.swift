@@ -26,37 +26,55 @@ final class MainPresenter: MainPresenterProtocol {
         interactor.fetchToDos { [weak self] result in
             switch result {
             case .success(let toDos):
-                DispatchQueue.main.async { self?.view?.loadedAllToDos(toDos.sorted(by: { $0.dateCreated > $1.dateCreated })) }
+                DispatchQueue.main.async {
+                    self?.view?.loadedAllToDos(toDos.sorted(by: { $0.id > $1.id }))
+                }
             case .failure(let failure):
-                DispatchQueue.main.async { self?.view?.showError(failure) }
+                DispatchQueue.main.async {
+                    self?.view?.showError(failure)
+                }
             }
         }
     }
     
     func createNewToDo() {
-        do {
-            let newToDo = try interactor.createEmptyToDo()
-            showEditToDo(toDo: newToDo)
-        } catch(let error) {
-            view?.showError(error)
+        interactor.createEmptyToDo { [weak self] result in
+            switch result {
+            case .success(let newToDo):
+                DispatchQueue.main.async {
+                    self?.showEditToDo(toDo: newToDo)
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.view?.showError(error)
+                }
+            }
         }
     }
-    
+
     func toggleIsCompleted(for toDo: ToDo) {
-        do {
-            try interactor.toggleIsChecked(for: toDo)
-            fetchAllToDos()
-        } catch(let error) {
-            view?.showError(error)
+        interactor.toggleIsChecked(for: toDo) { [weak self] result in
+            switch result {
+            case .success:
+                self?.fetchAllToDos()
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.view?.showError(error)
+                }
+            }
         }
     }
-    
+
     func deleteToDo(toDo: ToDo) {
-        do {
-            try interactor.deleteToDo(toDo: toDo)
-            fetchAllToDos()
-        } catch(let error) {
-            view?.showError(error)
+        interactor.deleteToDo(toDo: toDo) { [weak self] result in
+            switch result {
+            case .success:
+                self?.fetchAllToDos()
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.view?.showError(error)
+                }
+            }
         }
     }
     

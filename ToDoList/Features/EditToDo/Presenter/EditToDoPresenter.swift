@@ -26,10 +26,15 @@ final class EditToDoPresenter: EditToDoPresenterProtocol {
         toDo.title = title != nil && title!.count > 0 ? title! : toDo.title
         toDo.description = description != nil && description!.count > 0 ? description! : toDo.description
         
-        do {
-            try interactor.updateToDo(toDo: toDo)
-        } catch(let error) {
-            view?.showError(error)
+        interactor.updateToDo(toDo: toDo) { [weak self] result in
+            switch result {
+            case .success(let toDos):
+                break
+            case .failure(let failure):
+                DispatchQueue.main.async {
+                    self?.view?.showError(failure)
+                }
+            }
         }
     }
 }

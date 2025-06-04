@@ -31,7 +31,6 @@ final class MainPresenterUnitTests: XCTestCase {
         interactor.fetchToDosResult = .success(mockToDos)
         
         let expectation = self.expectation(description: "fetchAllToDos completes")
-        
         view.onLoadedToDos = {
             expectation.fulfill()
         }
@@ -49,7 +48,6 @@ final class MainPresenterUnitTests: XCTestCase {
         interactor.fetchToDosResult = .failure(error)
         
         let expectation = self.expectation(description: "fetchAllToDos fails")
-        
         view.onShowError = {
             expectation.fulfill()
         }
@@ -63,18 +61,31 @@ final class MainPresenterUnitTests: XCTestCase {
     
     func test_createNewToDo_success() {
         let toDo = ToDo.mocks.first!
-        interactor.createEmptyToDoResult = .success(toDo)
+        interactor.createEmptyToDoResult = toDo
         
+        let expectation = self.expectation(description: "createNewToDo completes")
         presenter.createNewToDo()
         
-        XCTAssertEqual(router.shownToDo, toDo)
+        DispatchQueue.main.async {
+            XCTAssertEqual(self.router.shownToDo, toDo)
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1.0)
     }
     
     func test_createNewToDo_failure() {
         let error = NSError(domain: "create", code: 1)
-        interactor.createEmptyToDoResult = .failure(error)
+        interactor.shouldThrowOnCreate = NSError(domain: "create", code: 1)
+        
+        let expectation = self.expectation(description: "createNewToDo fails")
+        view.onShowError = {
+            expectation.fulfill()
+        }
         
         presenter.createNewToDo()
+        
+        waitForExpectations(timeout: 1.0)
         
         XCTAssertEqual(view.shownError as NSError?, error)
     }
@@ -84,7 +95,6 @@ final class MainPresenterUnitTests: XCTestCase {
         interactor.fetchToDosResult = .success([toDo])
         
         let expectation = self.expectation(description: "fetchAllToDos completes")
-        
         view.onLoadedToDos = {
             expectation.fulfill()
         }
@@ -101,7 +111,14 @@ final class MainPresenterUnitTests: XCTestCase {
         let toDo = ToDo.mocks.first!
         interactor.shouldThrowOnToggle = NSError(domain: "toggle", code: 1)
         
+        let expectation = self.expectation(description: "fetchAllToDos fails")
+        view.onShowError = {
+            expectation.fulfill()
+        }
+        
         presenter.toggleIsCompleted(for: toDo)
+        
+        waitForExpectations(timeout: 1.0)
         
         XCTAssertNotNil(view.shownError)
     }
@@ -111,7 +128,6 @@ final class MainPresenterUnitTests: XCTestCase {
         interactor.fetchToDosResult = .success([toDo])
         
         let expectation = self.expectation(description: "fetchAllToDos completes")
-        
         view.onLoadedToDos = {
             expectation.fulfill()
         }
@@ -128,7 +144,14 @@ final class MainPresenterUnitTests: XCTestCase {
         let toDo = ToDo.mocks.first!
         interactor.shouldThrowOnDelete = NSError(domain: "delete", code: 1)
         
+        let expectation = self.expectation(description: "fetchAllToDos fails")
+        view.onShowError = {
+            expectation.fulfill()
+        }
+        
         presenter.deleteToDo(toDo: toDo)
+        
+        waitForExpectations(timeout: 1.0)
         
         XCTAssertNotNil(view.shownError)
     }
