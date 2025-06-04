@@ -17,10 +17,10 @@ extension ToDoEntity {
         toDoEntity.isCompleted = toDo.isCompleted
         toDoEntity.userId = Int64(toDo.userId)
         toDoEntity.dateCreated = toDo.dateCreated
-        
+
         return toDoEntity
     }
-    
+
     func toDomain() -> ToDo {
         return ToDo(
             id: Int(id),

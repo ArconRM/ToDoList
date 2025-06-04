@@ -11,15 +11,15 @@ import Foundation
 final class MainViewMock: MainViewProtocol {
     var loadedToDos: [ToDo]?
     var shownError: Error?
-    
+
     var onLoadedToDos: (() -> Void)?
     var onShowError: (() -> Void)?
-    
+
     func loadedAllToDos(_ todos: [ToDo]) {
         loadedToDos = todos
         onLoadedToDos?()
     }
-    
+
     func showError(_ error: Error) {
         shownError = error
         onShowError?()

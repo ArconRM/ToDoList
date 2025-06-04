@@ -9,20 +9,20 @@ import Foundation
 import UIKit
 
 final class ToDoTableViewDelegate: NSObject {
-    
+
     weak var cellDelegate: ToDoTableViewCellDelegate?
-    
+
     static let estimatedRowHeight: CGFloat = 170
-    
+
     var items: [ToDo] = []
     var filteredItems: [ToDo] = []
     private var isSearching = false
-    
+
     func setItems(items: [ToDo]) {
         self.items = items
         self.filteredItems = items
     }
-    
+
     func filterItems(with searchText: String) {
         if searchText.isEmpty {
             filteredItems = items
@@ -48,14 +48,14 @@ extension ToDoTableViewDelegate: UITableViewDelegate {
 }
 
 extension ToDoTableViewDelegate: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.toDoCell.rawValue, for: indexPath) as! ToDoTableViewCell
-        
+
         cell.configure(item: filteredItems[indexPath.section])
         cell.backgroundColor = .clear
         cell.delegate = cellDelegate

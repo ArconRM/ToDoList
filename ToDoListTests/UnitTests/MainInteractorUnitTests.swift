@@ -31,7 +31,7 @@ final class MainInteractorUnitTests: XCTestCase {
 
     func test_fetchToDos_firstLaunch_savesToPersistence() {
         let expectation = self.expectation(description: "fetch from network")
-        
+
         let expected = ToDo.mocks
 
         interactor.fetchToDos { result in

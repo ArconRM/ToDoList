@@ -9,11 +9,11 @@ import Foundation
 
 struct ToDoUrlSource: ToDoUrlSourceProtocol {
     private let baseUrlString: String = "https://dummyjson.com/"
-    
+
     func getBaseUrl() -> URL {
         return URL(string: baseUrlString)!
     }
-    
+
     func getAllToDosUrl() -> URL {
         return URL(string: baseUrlString)!.appendingPathComponent("todos")
     }

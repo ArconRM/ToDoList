@@ -9,46 +9,46 @@ import Foundation
 import UIKit
 
 final class MainViewController: UIViewController, MainViewProtocol {
-    
+
     private let presenter: MainPresenterProtocol
     private var toDoTableViewDelegate: ToDoTableViewDelegate?
-    
+
     init(presenter: MainPresenterProtocol, toDoTableViewDelegate: ToDoTableViewDelegate) {
         self.presenter = presenter
         self.toDoTableViewDelegate = toDoTableViewDelegate
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         navigationController?.navigationBar.prefersLargeTitles = true
-        
+
         presenter.fetchAllToDos()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.backgroundColor = .systemBackground
-        
+
         toDoTableViewDelegate?.cellDelegate = self
-        
+
         toDoTableView.delegate = toDoTableViewDelegate
         toDoTableView.dataSource = toDoTableViewDelegate
         toDoTableView.register(ToDoTableViewCell.self, forCellReuseIdentifier: CellIdentifiers.toDoCell.rawValue)
-        
+
         setupView()
         setupSearchController()
         setupToolbar()
-        
+
         toDoTableView.contentInset.bottom = 44
         toDoTableView.scrollIndicatorInsets.bottom = 44
-        
+
         presenter.viewDidLoad()
     }
 
@@ -56,16 +56,16 @@ final class MainViewController: UIViewController, MainViewProtocol {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Поиск"
-        
+
         navigationItem.title = "Задачи"
         navigationItem.searchController = searchController
-        
+
         definesPresentationContext = true
     }
-    
+
     private func setupToolbar() {
         toolbarButton.addTarget(self, action: #selector(createToDoWasPressed), for: .touchUpInside)
-        
+
         toolbar.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(toolbar)
 
@@ -89,20 +89,18 @@ final class MainViewController: UIViewController, MainViewProtocol {
 
         toolbar.setItems([flexibleSpace, labelItem, flexibleSpace, buttonItem], animated: false)
     }
-    
+
     @objc func createToDoWasPressed() {
         presenter.createNewToDo()
     }
-    
-    
+
     // MARK: - Setup View
     private func setupView() {
         view.addSubview(toDoTableView)
-        
+
         setupConstraints()
     }
-    
-    
+
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             toDoTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -111,16 +109,16 @@ final class MainViewController: UIViewController, MainViewProtocol {
             toDoTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-    
+
     // MARK: - UI Elements
     private let searchController = UISearchController(searchResultsController: nil)
-    
+
     private let toolbar = UIToolbar()
     private let toolbarLabel = LabelFactory.makeLabel(fontSize: .small)
     private let toolbarButton: UIButton = {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
-        
+
         let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .light)
         let image = UIImage(systemName: "square.and.pencil", withConfiguration: config)
         button.setImage(image, for: .normal)
@@ -128,12 +126,12 @@ final class MainViewController: UIViewController, MainViewProtocol {
         button.tintColor = .systemYellow
         return button
     }()
-    
+
     private let toDoTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.isScrollEnabled = true
-        
+
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
@@ -143,13 +141,13 @@ final class MainViewController: UIViewController, MainViewProtocol {
 
         return tableView
     }()
-    
+
     // MARK: - Data Methods
     func loadedAllToDos(_ toDos: [ToDo]) {
         toDoTableViewDelegate?.setItems(items: toDos)
         toDoTableView.reloadData()
         toDoTableView.layoutIfNeeded()
-        
+
         toolbarLabel.text = "Задач: \(toDos.count)"
     }
 }
@@ -157,18 +155,18 @@ final class MainViewController: UIViewController, MainViewProtocol {
 extension MainViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text else { return }
-        
+
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self = self else { return }
-            
+
             self.toDoTableViewDelegate?.filterItems(with: searchText)
-            
+
             let count = self.toDoTableViewDelegate?.filteredItems.count ?? 0
-            
+
             DispatchQueue.main.async {
                 self.toDoTableView.reloadData()
                 self.toolbarLabel.text = "Задач: \(count)"
-                
+
                 UIView.animate(withDuration: 0.2) {
                     self.toDoTableView.layoutIfNeeded()
                 }
@@ -181,42 +179,42 @@ extension MainViewController: ToDoTableViewCellDelegate {
     func didTapEdit(on cell: ToDoTableViewCell) {
         guard let indexPath = toDoTableView.indexPath(for: cell),
               let toDo = toDoTableViewDelegate?.filteredItems[indexPath.section] else { return }
-        
+
         presenter.showEditToDo(toDo: toDo)
     }
-    
+
     func didTapDelete(on cell: ToDoTableViewCell) {
         let alertController = UIAlertController(
             title: "Удаление",
             message: "Вы уверены что хотите удалить задачу?",
             preferredStyle: .alert
         )
-        
+
         let noAction = UIAlertAction(
             title: "Нет",
             style: .cancel,
             handler: nil
         )
-        
+
         let yesAction = UIAlertAction(
             title: "Да",
             style: .destructive,
         ) { [weak self] _ in
             guard let indexPath = self?.toDoTableView.indexPath(for: cell),
                   let toDo = self?.toDoTableViewDelegate?.filteredItems[indexPath.section] else { return }
-            
+
             self?.presenter.deleteToDo(toDo: toDo)
         }
-        
+
         alertController.addAction(noAction)
         alertController.addAction(yesAction)
         present(alertController, animated: true)
     }
-    
+
     func didToggleCheckmark(on cell: ToDoTableViewCell) {
         guard let indexPath = toDoTableView.indexPath(for: cell),
               let toDo = toDoTableViewDelegate?.filteredItems[indexPath.section] else { return }
-        
+
         presenter.toggleIsCompleted(for: toDo)
     }
 }
@@ -228,4 +226,3 @@ extension MainViewController: ToDoTableViewCellDelegate {
     let view = assembly.buildMainViewController(navigationController: UINavigationController())
     return view
 }
-

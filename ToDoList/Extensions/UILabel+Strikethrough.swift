@@ -16,15 +16,15 @@ extension UILabel {
         )
         self.attributedText = attributedString
     }
-    
+
     func removeStrikethrough() {
         guard let currentAttributedText = self.attributedText else {
             return
         }
-        
+
         let mutableAttributedString = NSMutableAttributedString(attributedString: currentAttributedText)
         mutableAttributedString.removeAttribute(.strikethroughStyle, range: NSRange(location: 0, length: mutableAttributedString.length))
-        
+
         self.attributedText = mutableAttributedString
     }
 }

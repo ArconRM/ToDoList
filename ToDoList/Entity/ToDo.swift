@@ -37,7 +37,7 @@ extension ToDo {
             .init(id: 4, title: "Mock", description: "Watch a documentary", isCompleted: false, userId: 84, dateCreated: Date()),
             .init(id: 5, title: "Mock", description: "Invest in cryptocurrency", isCompleted: false, userId: 163, dateCreated: Date()),
             .init(id: 6, title: "Mock", description: "Contribute code or a monetary donation to an open-source software project", isCompleted: false, userId: 69, dateCreated: Date()),
-            .init(id: 7, title: "Mock", description: "Solve a Rubik's cube", isCompleted: true, userId: 76, dateCreated: Date()),
+            .init(id: 7, title: "Mock", description: "Solve a Rubik's cube", isCompleted: true, userId: 76, dateCreated: Date())
         ]
     }
 }

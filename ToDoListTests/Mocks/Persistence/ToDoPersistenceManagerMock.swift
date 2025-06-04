@@ -10,7 +10,7 @@ import Foundation
 
 final class ToDoPersistenceManagerMock: ToDoPersistenceManagerProtocol {
     func saveToDo(_ toDo: ToDoList.ToDo) throws { }
-    
+
     var savedToDos: [ToDo] = []
     var loadedToDos: [ToDo] = []
     var updatedToDo: ToDo?
@@ -31,11 +31,11 @@ final class ToDoPersistenceManagerMock: ToDoPersistenceManagerProtocol {
     func createEmptyToDo() throws -> ToDo {
         return ToDo.mocks.first!
     }
-    
+
     func updateToDo(_ todo: ToDo) throws {
         updatedToDo = todo
         if shouldThrowOnUpdate { throw NSError(domain: "update", code: 1) }
     }
-    
+
     func deleteToDo(id: Int) throws {}
 }

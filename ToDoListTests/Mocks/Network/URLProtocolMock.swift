@@ -10,7 +10,7 @@ import Foundation
 class URLProtocolMock: URLProtocol {
     static var testData: Data?
     static var testError: Error?
-    
+
     override class func canInit(with request: URLRequest) -> Bool {
         return true
     }

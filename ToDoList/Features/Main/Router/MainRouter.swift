@@ -12,12 +12,12 @@ struct MainRouter: MainRouterProtocol {
     weak var view: MainViewProtocol?
     private weak var navigationController: UINavigationController?
     private let assembly: AssemblyProtocol
-    
+
     init(navigationController: UINavigationController, assembly: AssemblyProtocol) {
         self.navigationController = navigationController
         self.assembly = assembly
     }
-    
+
     func showEditToDoView(toDo: ToDo, listener: ToDoUpdateListener) {
         let editToDoViewController = assembly.buildEditToDoViewController(toDo: toDo, listener: listener)
         navigationController?.pushViewController(editToDoViewController, animated: true)

@@ -19,13 +19,13 @@ extension ErrorPresentable where Self: UIViewController {
             message: error.localizedDescription,
             preferredStyle: .alert
         )
-        
+
         let okAction = UIAlertAction(
             title: "OK",
             style: .default,
             handler: nil
         )
-        
+
         alertController.addAction(okAction)
         present(alertController, animated: true)
     }

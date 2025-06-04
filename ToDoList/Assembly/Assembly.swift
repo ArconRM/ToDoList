@@ -22,17 +22,17 @@ struct Assembly: AssemblyProtocol {
                 assembly: self
             )
         )
-        
+
         let view = MainViewController(
             presenter: presenter,
             toDoTableViewDelegate: ToDoTableViewDelegate()
         )
-        
+
         presenter.view = view
-        
+
         return view
     }
-    
+
     func buildEditToDoViewController(toDo: ToDo, listener: ToDoUpdateListener) -> EditToDoViewController {
         let presenter = EditToDoPresenter(
             interactor: EditToDoInteractor(
@@ -40,12 +40,12 @@ struct Assembly: AssemblyProtocol {
             ),
             toDo: toDo
         )
-        
+
         let view = EditToDoViewController(presenter: presenter)
-        
+
         presenter.view = view
         presenter.listener = listener
-        
+
         return view
     }
 }

@@ -13,14 +13,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
+
         let navController = UINavigationController()
         navController.navigationBar.tintColor = .systemYellow
-        
+
         let assembly = Assembly()
         let mainViewController = assembly.buildMainViewController(navigationController: navController)
         navController.viewControllers = [mainViewController]
-        
+
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = navController
         self.window = window
@@ -56,6 +56,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
 
-
 }
-

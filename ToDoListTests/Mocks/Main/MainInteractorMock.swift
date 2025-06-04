@@ -15,7 +15,7 @@ final class MainInteractorMock: MainInteractorProtocol {
             completion(result)
         }
     }
-    
+
     var createEmptyToDoResult: ToDo?
     var shouldThrowOnCreate: Error?
     func createEmptyToDo(completion: @escaping (Result<ToDo, any Error>) -> Void) {
@@ -27,7 +27,7 @@ final class MainInteractorMock: MainInteractorProtocol {
             fatalError("createEmptyToDoResult not set")
         }
     }
-    
+
     var toggleToDoCalledFor: ToDo?
     var shouldThrowOnToggle: Error?
     func toggleIsChecked(for toDo: ToDo, completion: @escaping (Result<Void, any Error>) -> Void) {
@@ -38,8 +38,7 @@ final class MainInteractorMock: MainInteractorProtocol {
             completion(.success(()))
         }
     }
-    
-    
+
     var deletedToDo: ToDo?
     var shouldThrowOnDelete: Error?
     func deleteToDo(toDo: ToDo, completion: @escaping (Result<Void, any Error>) -> Void) {

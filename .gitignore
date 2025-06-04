@@ -4,3 +4,9 @@
 /ToDoList.xcworkspace
 ToDoList.xcodeproj/xcuserdata
 ToDoList.xcodeproj/xcshareddata
+DerivedData/
+xcuserdata/
+xcshareddata/
+.build/
+.swiftpm/xcode/xcuserdata/
+/Sources

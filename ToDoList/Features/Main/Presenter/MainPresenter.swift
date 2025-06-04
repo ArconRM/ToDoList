@@ -8,20 +8,20 @@
 import Foundation
 
 final class MainPresenter: MainPresenterProtocol, ToDoUpdateListener {
-    
+
     private let interactor: MainInteractorProtocol
     private let router: MainRouterProtocol
     weak var view: MainViewProtocol?
-    
+
     init(interactor: MainInteractorProtocol, router: MainRouterProtocol) {
         self.interactor = interactor
         self.router = router
     }
-    
+
     func viewDidLoad() {
 //        fetchAllToDos()
     }
-    
+
     func fetchAllToDos() {
         interactor.fetchToDos { [weak self] result in
             switch result {
@@ -36,7 +36,7 @@ final class MainPresenter: MainPresenterProtocol, ToDoUpdateListener {
             }
         }
     }
-    
+
     func createNewToDo() {
         interactor.createEmptyToDo { [weak self] result in
             switch result {
@@ -77,11 +77,11 @@ final class MainPresenter: MainPresenterProtocol, ToDoUpdateListener {
             }
         }
     }
-    
+
     func showEditToDo(toDo: ToDo) {
         router.showEditToDoView(toDo: toDo, listener: self)
     }
-    
+
     func didUpdateToDo() {
         fetchAllToDos()
     }
