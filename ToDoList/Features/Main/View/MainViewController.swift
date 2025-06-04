@@ -157,15 +157,23 @@ final class MainViewController: UIViewController, MainViewProtocol {
 extension MainViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text else { return }
-        toDoTableViewDelegate?.filterItems(with: searchText)
-        toDoTableView.reloadData()
         
-        UIView.animate(withDuration: 0.2) {
-            self.toDoTableView.layoutIfNeeded()
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else { return }
+            
+            self.toDoTableViewDelegate?.filterItems(with: searchText)
+            
+            let count = self.toDoTableViewDelegate?.filteredItems.count ?? 0
+            
+            DispatchQueue.main.async {
+                self.toDoTableView.reloadData()
+                self.toolbarLabel.text = "\(count) задач"
+                
+                UIView.animate(withDuration: 0.2) {
+                    self.toDoTableView.layoutIfNeeded()
+                }
+            }
         }
-        
-        let count = toDoTableViewDelegate?.filteredItems.count ?? 0
-        toolbarLabel.text = "\(count) задач"
     }
 }
 
