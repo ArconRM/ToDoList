@@ -12,7 +12,7 @@ struct AssemblyMock: AssemblyProtocol {
     func buildMainViewController(navigationController: UINavigationController) -> MainViewController {
         let presenter = MainPresenter(
             interactor: MainInteractor(
-                toDoNetworkService: ToDoNetworkServiceMock(),
+                toDoNetworkService: ToDoNetworkServiceMockData(),
                 toDoPersistenceManager: ToDoCoreDataManager()
             ),
             router: MainRouter(

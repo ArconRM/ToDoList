@@ -7,8 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		167020A92DF05484001C8612 /* ToDoPersistenceManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167020A82DF05484001C8612 /* ToDoPersistenceManagerMock.swift */; };
+		167020AB2DF05540001C8612 /* EditToDoPresenterUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167020AA2DF05540001C8612 /* EditToDoPresenterUnitTests.swift */; };
+		167020AD2DF0592C001C8612 /* EditToDoInteractorUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167020AC2DF0592C001C8612 /* EditToDoInteractorUnitTests.swift */; };
+		167020AF2DF05A5A001C8612 /* Date+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167020AE2DF05A5A001C8612 /* Date+Formatting.swift */; };
 		168CE7E92DEF6C7900F1343D /* ToDoNetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168CE7E62DEF6C7900F1343D /* ToDoNetworkServiceProtocol.swift */; };
 		168CE7EA2DEF6C7900F1343D /* ToDoUrlSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168CE7E72DEF6C7900F1343D /* ToDoUrlSourceProtocol.swift */; };
+		168CE7FF2DEF711A00F1343D /* MainViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168CE7FE2DEF711A00F1343D /* MainViewMock.swift */; };
+		168CE8012DEF716100F1343D /* MainRouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168CE8002DEF716100F1343D /* MainRouterMock.swift */; };
+		168CE8032DEF718700F1343D /* MainInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168CE8022DEF718700F1343D /* MainInteractorMock.swift */; };
+		168CE8072DEF726700F1343D /* EditToDoViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168CE8062DEF726700F1343D /* EditToDoViewMock.swift */; };
+		168CE80B2DEF72B100F1343D /* EditToDoInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168CE80A2DEF72B100F1343D /* EditToDoInteractorMock.swift */; };
+		168CE80E2DEF74CD00F1343D /* MainPresenterUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168CE80D2DEF74CD00F1343D /* MainPresenterUnitTests.swift */; };
+		168CE8132DEF7B2000F1343D /* MainInteractorUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168CE8122DEF7B2000F1343D /* MainInteractorUnitTests.swift */; };
 		169D89A92DEC56F0006CBEF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 169D89A22DEC56F0006CBEF9 /* Assets.xcassets */; };
 		169D89AB2DEC56F0006CBEF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169D89A52DEC56F0006CBEF9 /* LaunchScreen.storyboard */; };
 		169D89AC2DEC56F0006CBEF9 /* ToDoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D899E2DEC56F0006CBEF9 /* ToDoDTO.swift */; };
@@ -32,7 +43,7 @@
 		169D89DC2DEDA593006CBEF9 /* CellIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D89DB2DEDA593006CBEF9 /* CellIdentifiers.swift */; };
 		169D89DE2DEDA68E006CBEF9 /* AssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D89DD2DEDA68E006CBEF9 /* AssemblyProtocol.swift */; };
 		169D89E22DEDA6D5006CBEF9 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D89E12DEDA6D5006CBEF9 /* Assembly.swift */; };
-		169D89E42DEDA72D006CBEF9 /* ToDoNetworkServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D89E32DEDA72D006CBEF9 /* ToDoNetworkServiceMock.swift */; };
+		169D89E42DEDA72D006CBEF9 /* ToDoNetworkServiceMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D89E32DEDA72D006CBEF9 /* ToDoNetworkServiceMockData.swift */; };
 		169D89E62DEDA7D0006CBEF9 /* AssemblyMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169D89E52DEDA7D0006CBEF9 /* AssemblyMock.swift */; };
 		16A0CA362DEDC49600C3B858 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0CA352DEDC49600C3B858 /* MainRouter.swift */; };
 		16A0CA3A2DEDCD4100C3B858 /* ToDoListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0CA392DEDCD4100C3B858 /* ToDoListDTO.swift */; };
@@ -53,9 +64,32 @@
 		16A0CA622DEE2CBB00C3B858 /* UILabel+Strikethrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0CA602DEE2CBB00C3B858 /* UILabel+Strikethrough.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		168CE7F52DEF70BD00F1343D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 169D89642DEC500D006CBEF9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 169D896B2DEC500D006CBEF9;
+			remoteInfo = ToDoList;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		167020A82DF05484001C8612 /* ToDoPersistenceManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoPersistenceManagerMock.swift; sourceTree = "<group>"; };
+		167020AA2DF05540001C8612 /* EditToDoPresenterUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToDoPresenterUnitTests.swift; sourceTree = "<group>"; };
+		167020AC2DF0592C001C8612 /* EditToDoInteractorUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToDoInteractorUnitTests.swift; sourceTree = "<group>"; };
+		167020AE2DF05A5A001C8612 /* Date+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatting.swift"; sourceTree = "<group>"; };
 		168CE7E62DEF6C7900F1343D /* ToDoNetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoNetworkServiceProtocol.swift; sourceTree = "<group>"; };
 		168CE7E72DEF6C7900F1343D /* ToDoUrlSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoUrlSourceProtocol.swift; sourceTree = "<group>"; };
+		168CE7F12DEF70BD00F1343D /* ToDoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		168CE7FE2DEF711A00F1343D /* MainViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewMock.swift; sourceTree = "<group>"; };
+		168CE8002DEF716100F1343D /* MainRouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouterMock.swift; sourceTree = "<group>"; };
+		168CE8022DEF718700F1343D /* MainInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractorMock.swift; sourceTree = "<group>"; };
+		168CE8062DEF726700F1343D /* EditToDoViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToDoViewMock.swift; sourceTree = "<group>"; };
+		168CE80A2DEF72B100F1343D /* EditToDoInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToDoInteractorMock.swift; sourceTree = "<group>"; };
+		168CE80D2DEF74CD00F1343D /* MainPresenterUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterUnitTests.swift; sourceTree = "<group>"; };
+		168CE8112DEF7A4F00F1343D /* ToDoList.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ToDoList.xctestplan; sourceTree = "<group>"; };
+		168CE8122DEF7B2000F1343D /* MainInteractorUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractorUnitTests.swift; sourceTree = "<group>"; };
 		169D896C2DEC500D006CBEF9 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		169D899E2DEC56F0006CBEF9 /* ToDoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoDTO.swift; sourceTree = "<group>"; };
 		169D89A12DEC56F0006CBEF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +115,7 @@
 		169D89DB2DEDA593006CBEF9 /* CellIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiers.swift; sourceTree = "<group>"; };
 		169D89DD2DEDA68E006CBEF9 /* AssemblyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyProtocol.swift; sourceTree = "<group>"; };
 		169D89E12DEDA6D5006CBEF9 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
-		169D89E32DEDA72D006CBEF9 /* ToDoNetworkServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoNetworkServiceMock.swift; sourceTree = "<group>"; };
+		169D89E32DEDA72D006CBEF9 /* ToDoNetworkServiceMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoNetworkServiceMockData.swift; sourceTree = "<group>"; };
 		169D89E52DEDA7D0006CBEF9 /* AssemblyMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyMock.swift; sourceTree = "<group>"; };
 		16A0CA352DEDC49600C3B858 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		16A0CA392DEDCD4100C3B858 /* ToDoListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListDTO.swift; sourceTree = "<group>"; };
@@ -104,6 +138,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		168CE7EE2DEF70BD00F1343D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		169D89692DEC500D006CBEF9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -114,6 +155,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		167020B12DF0B682001C8612 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				167020A82DF05484001C8612 /* ToDoPersistenceManagerMock.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		168CE7E82DEF6C7900F1343D /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,10 +180,70 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		168CE7EC2DEF705600F1343D /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				169D89982DEC56F0006CBEF9 /* Main */,
+				169D899D2DEC56F0006CBEF9 /* EditToDo */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		168CE7FB2DEF70EF00F1343D /* ToDoListTests */ = {
+			isa = PBXGroup;
+			children = (
+				168CE80C2DEF74A200F1343D /* UnitTests */,
+				168CE7FD2DEF70F100F1343D /* Mocks */,
+			);
+			path = ToDoListTests;
+			sourceTree = "<group>";
+		};
+		168CE7FD2DEF70F100F1343D /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				167020B12DF0B682001C8612 /* Persistence */,
+				168CE8042DEF721000F1343D /* Main */,
+				168CE8052DEF725400F1343D /* EditToDo */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		168CE8042DEF721000F1343D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				168CE7FE2DEF711A00F1343D /* MainViewMock.swift */,
+				168CE8002DEF716100F1343D /* MainRouterMock.swift */,
+				168CE8022DEF718700F1343D /* MainInteractorMock.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		168CE8052DEF725400F1343D /* EditToDo */ = {
+			isa = PBXGroup;
+			children = (
+				168CE8062DEF726700F1343D /* EditToDoViewMock.swift */,
+				168CE80A2DEF72B100F1343D /* EditToDoInteractorMock.swift */,
+			);
+			path = EditToDo;
+			sourceTree = "<group>";
+		};
+		168CE80C2DEF74A200F1343D /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				168CE80D2DEF74CD00F1343D /* MainPresenterUnitTests.swift */,
+				168CE8122DEF7B2000F1343D /* MainInteractorUnitTests.swift */,
+				167020AA2DF05540001C8612 /* EditToDoPresenterUnitTests.swift */,
+				167020AC2DF0592C001C8612 /* EditToDoInteractorUnitTests.swift */,
+			);
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
 		169D89632DEC500D006CBEF9 = {
 			isa = PBXGroup;
 			children = (
+				168CE8112DEF7A4F00F1343D /* ToDoList.xctestplan */,
 				169D89A82DEC56F0006CBEF9 /* ToDoList */,
+				168CE7FB2DEF70EF00F1343D /* ToDoListTests */,
 				169D896D2DEC500D006CBEF9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -143,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				169D896C2DEC500D006CBEF9 /* ToDoList.app */,
+				168CE7F12DEF70BD00F1343D /* ToDoListTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -247,14 +357,13 @@
 		169D89A82DEC56F0006CBEF9 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
-				16A0CA612DEE2CBB00C3B858 /* Extensions */,
+				168CE7EC2DEF705600F1343D /* Features */,
 				169D89C72DED9CE1006CBEF9 /* Common */,
-				169D89992DEC56F0006CBEF9 /* Assembly */,
-				169D89982DEC56F0006CBEF9 /* Main */,
-				169D899D2DEC56F0006CBEF9 /* EditToDo */,
 				169D899F2DEC56F0006CBEF9 /* Entity */,
 				169D89B12DED929B006CBEF9 /* Persistence */,
 				169D89B22DED92F3006CBEF9 /* Network */,
+				169D89992DEC56F0006CBEF9 /* Assembly */,
+				16A0CA612DEE2CBB00C3B858 /* Extensions */,
 				169D89A22DEC56F0006CBEF9 /* Assets.xcassets */,
 				169D89A32DEC56F0006CBEF9 /* Info.plist */,
 				169D89A52DEC56F0006CBEF9 /* LaunchScreen.storyboard */,
@@ -280,7 +389,7 @@
 			children = (
 				168CE7E82DEF6C7900F1343D /* Protocols */,
 				169D89B52DED9388006CBEF9 /* ToDoNetworkService.swift */,
-				169D89E32DEDA72D006CBEF9 /* ToDoNetworkServiceMock.swift */,
+				169D89E32DEDA72D006CBEF9 /* ToDoNetworkServiceMockData.swift */,
 				169D89B92DED9479006CBEF9 /* ToDoUrlSource.swift */,
 			);
 			path = Network;
@@ -338,6 +447,7 @@
 			isa = PBXGroup;
 			children = (
 				16A0CA602DEE2CBB00C3B858 /* UILabel+Strikethrough.swift */,
+				167020AE2DF05A5A001C8612 /* Date+Formatting.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -345,6 +455,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		168CE7F02DEF70BD00F1343D /* ToDoListTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 168CE7F72DEF70BD00F1343D /* Build configuration list for PBXNativeTarget "ToDoListTests" */;
+			buildPhases = (
+				168CE7ED2DEF70BD00F1343D /* Sources */,
+				168CE7EE2DEF70BD00F1343D /* Frameworks */,
+				168CE7EF2DEF70BD00F1343D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				168CE7F62DEF70BD00F1343D /* PBXTargetDependency */,
+			);
+			name = ToDoListTests;
+			packageProductDependencies = (
+			);
+			productName = ToDoListTests;
+			productReference = 168CE7F12DEF70BD00F1343D /* ToDoListTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		169D896B2DEC500D006CBEF9 /* ToDoList */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 169D897F2DEC500E006CBEF9 /* Build configuration list for PBXNativeTarget "ToDoList" */;
@@ -375,6 +505,10 @@
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
+					168CE7F02DEF70BD00F1343D = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 169D896B2DEC500D006CBEF9;
+					};
 					169D896B2DEC500D006CBEF9 = {
 						CreatedOnToolsVersion = 16.4;
 					};
@@ -399,11 +533,19 @@
 			projectRoot = "";
 			targets = (
 				169D896B2DEC500D006CBEF9 /* ToDoList */,
+				168CE7F02DEF70BD00F1343D /* ToDoListTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		168CE7EF2DEF70BD00F1343D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		169D896A2DEC500D006CBEF9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -437,6 +579,23 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		168CE7ED2DEF70BD00F1343D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				168CE8072DEF726700F1343D /* EditToDoViewMock.swift in Sources */,
+				168CE8132DEF7B2000F1343D /* MainInteractorUnitTests.swift in Sources */,
+				167020AD2DF0592C001C8612 /* EditToDoInteractorUnitTests.swift in Sources */,
+				168CE80E2DEF74CD00F1343D /* MainPresenterUnitTests.swift in Sources */,
+				168CE80B2DEF72B100F1343D /* EditToDoInteractorMock.swift in Sources */,
+				168CE8032DEF718700F1343D /* MainInteractorMock.swift in Sources */,
+				167020AB2DF05540001C8612 /* EditToDoPresenterUnitTests.swift in Sources */,
+				168CE7FF2DEF711A00F1343D /* MainViewMock.swift in Sources */,
+				167020A92DF05484001C8612 /* ToDoPersistenceManagerMock.swift in Sources */,
+				168CE8012DEF716100F1343D /* MainRouterMock.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		169D89682DEC500D006CBEF9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -463,13 +622,14 @@
 				169D89BE2DED97AF006CBEF9 /* MainPresenter.swift in Sources */,
 				169D89AE2DEC56F0006CBEF9 /* SceneDelegate.swift in Sources */,
 				16A0CA522DEDFDB600C3B858 /* EditToDoViewProtocol.swift in Sources */,
+				167020AF2DF05A5A001C8612 /* Date+Formatting.swift in Sources */,
 				169D89CB2DED9DD1006CBEF9 /* MainViewController.swift in Sources */,
 				16A0CA622DEE2CBB00C3B858 /* UILabel+Strikethrough.swift in Sources */,
 				16A0CA3A2DEDCD4100C3B858 /* ToDoListDTO.swift in Sources */,
 				16A0CA4E2DEDFD2400C3B858 /* EditToDoPresenterProtocol.swift in Sources */,
 				16A0CA582DEE036100C3B858 /* TextViewFactory.swift in Sources */,
 				16A0CA4C2DEDFAAD00C3B858 /* EditToDoInteractor.swift in Sources */,
-				169D89E42DEDA72D006CBEF9 /* ToDoNetworkServiceMock.swift in Sources */,
+				169D89E42DEDA72D006CBEF9 /* ToDoNetworkServiceMockData.swift in Sources */,
 				169D89C92DED9CF0006CBEF9 /* ErrorPresentable.swift in Sources */,
 				16A0CA542DEDFE2100C3B858 /* EditToDoViewController.swift in Sources */,
 				169D89B62DED9388006CBEF9 /* ToDoNetworkService.swift in Sources */,
@@ -488,6 +648,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		168CE7F62DEF70BD00F1343D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 169D896B2DEC500D006CBEF9 /* ToDoList */;
+			targetProxy = 168CE7F52DEF70BD00F1343D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		169D89A52DEC56F0006CBEF9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -501,6 +669,52 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		168CE7F82DEF70BD00F1343D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2SJ5X5ARC2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = qwerty.ToDoListTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToDoList.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ToDoList";
+			};
+			name = Debug;
+		};
+		168CE7F92DEF70BD00F1343D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2SJ5X5ARC2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = qwerty.ToDoListTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToDoList.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ToDoList";
+			};
+			name = Release;
+		};
 		169D89802DEC500E006CBEF9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -691,6 +905,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		168CE7F72DEF70BD00F1343D /* Build configuration list for PBXNativeTarget "ToDoListTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				168CE7F82DEF70BD00F1343D /* Debug */,
+				168CE7F92DEF70BD00F1343D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		169D89672DEC500D006CBEF9 /* Build configuration list for PBXProject "ToDoList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
