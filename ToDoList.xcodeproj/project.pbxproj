@@ -63,6 +63,8 @@
 		16A0CA5A2DEE07F900C3B858 /* ToDoTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0CA592DEE07F900C3B858 /* ToDoTableViewCellDelegate.swift */; };
 		16A0CA622DEE2CBB00C3B858 /* UILabel+Strikethrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0CA602DEE2CBB00C3B858 /* UILabel+Strikethrough.swift */; };
 		16FFDD6C2DF0E3E3004301B2 /* ToDoUpdateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FFDD6B2DF0E3E3004301B2 /* ToDoUpdateListener.swift */; };
+		16FFDD702DF0E762004301B2 /* URLProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FFDD6F2DF0E762004301B2 /* URLProtocolMock.swift */; };
+		16FFDD722DF0E7E5004301B2 /* NetworkServiceUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FFDD712DF0E7E5004301B2 /* NetworkServiceUnitTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +139,8 @@
 		16A0CA592DEE07F900C3B858 /* ToDoTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		16A0CA602DEE2CBB00C3B858 /* UILabel+Strikethrough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Strikethrough.swift"; sourceTree = "<group>"; };
 		16FFDD6B2DF0E3E3004301B2 /* ToDoUpdateListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoUpdateListener.swift; sourceTree = "<group>"; };
+		16FFDD6F2DF0E762004301B2 /* URLProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolMock.swift; sourceTree = "<group>"; };
+		16FFDD712DF0E7E5004301B2 /* NetworkServiceUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceUnitTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +207,7 @@
 		168CE7FD2DEF70F100F1343D /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				16FFDD6E2DF0E751004301B2 /* Network */,
 				167020B12DF0B682001C8612 /* Persistence */,
 				168CE8042DEF721000F1343D /* Main */,
 				168CE8052DEF725400F1343D /* EditToDo */,
@@ -236,6 +241,7 @@
 				168CE8122DEF7B2000F1343D /* MainInteractorUnitTests.swift */,
 				167020AA2DF05540001C8612 /* EditToDoPresenterUnitTests.swift */,
 				167020AC2DF0592C001C8612 /* EditToDoInteractorUnitTests.swift */,
+				16FFDD712DF0E7E5004301B2 /* NetworkServiceUnitTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -455,6 +461,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		16FFDD6E2DF0E751004301B2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				16FFDD6F2DF0E762004301B2 /* URLProtocolMock.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -563,7 +577,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		169D89932DEC56B9006CBEF9 /* SwiftLint Script */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -575,7 +589,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if command -v ${PODS_ROOT}/SwiftLint/swiftlint >/dev/null 2>&1\nthen\n    ${PODS_ROOT}/SwiftLint/swiftlint\n    ${PODS_ROOT}/SwiftLint/swiftlint --fix\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
 		};
@@ -592,7 +606,9 @@
 				168CE80E2DEF74CD00F1343D /* MainPresenterUnitTests.swift in Sources */,
 				168CE80B2DEF72B100F1343D /* EditToDoInteractorMock.swift in Sources */,
 				168CE8032DEF718700F1343D /* MainInteractorMock.swift in Sources */,
+				16FFDD722DF0E7E5004301B2 /* NetworkServiceUnitTests.swift in Sources */,
 				167020AB2DF05540001C8612 /* EditToDoPresenterUnitTests.swift in Sources */,
+				16FFDD702DF0E762004301B2 /* URLProtocolMock.swift in Sources */,
 				168CE7FF2DEF711A00F1343D /* MainViewMock.swift in Sources */,
 				167020A92DF05484001C8612 /* ToDoPersistenceManagerMock.swift in Sources */,
 				168CE8012DEF716100F1343D /* MainRouterMock.swift in Sources */,

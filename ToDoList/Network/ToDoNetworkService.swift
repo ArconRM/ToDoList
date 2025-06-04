@@ -8,17 +8,20 @@
 import Foundation
 
 struct ToDoNetworkService: ToDoNetworkServiceProtocol {
-    private let urlSource: ToDoUrlSourceProtocol
     
-    init(urlSource: ToDoUrlSourceProtocol) {
+    private let urlSource: ToDoUrlSourceProtocol
+    private let session: URLSession
+    
+    init(urlSource: ToDoUrlSourceProtocol, session: URLSession = .shared) {
         self.urlSource = urlSource
+        self.session = session
     }
     
     func fetchAllToDos(
         resultQueue: DispatchQueue,
         completion: @escaping (Result<[ToDoDTO], Error>) -> Void
     ) {
-        URLSession.shared.dataTask(with: urlSource.getAllToDosUrl()) { data, _, error in
+        session.dataTask(with: urlSource.getAllToDosUrl()) { data, _, error in
             if let error = error {
                 resultQueue.async { completion(.failure(error)) }
             }
