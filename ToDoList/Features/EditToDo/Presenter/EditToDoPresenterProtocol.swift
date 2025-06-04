@@ -10,4 +10,5 @@ import Foundation
 protocol EditToDoPresenterProtocol: BasePresenterProtocol {
     var toDo: ToDo { get }
     func updateToDo(title: String?, description: String?)
+    func viewWillDisappear()
 }

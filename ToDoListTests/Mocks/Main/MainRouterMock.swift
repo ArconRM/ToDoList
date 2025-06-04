@@ -10,7 +10,7 @@ import Foundation
 
 final class MainRouterMock: MainRouterProtocol {
     var shownToDo: ToDo?
-    func showEditToDoView(toDo: ToDo) {
+    func showEditToDoView(toDo: ToDo, listener: any ToDoUpdateListener) {
         shownToDo = toDo
     }
 }

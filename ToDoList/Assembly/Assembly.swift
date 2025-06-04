@@ -33,7 +33,7 @@ struct Assembly: AssemblyProtocol {
         return view
     }
     
-    func buildEditToDoViewController(toDo: ToDo) -> EditToDoViewController {
+    func buildEditToDoViewController(toDo: ToDo, listener: ToDoUpdateListener) -> EditToDoViewController {
         let presenter = EditToDoPresenter(
             interactor: EditToDoInteractor(
                 toDoPersistenceManager: ToDoCoreDataManager()
@@ -44,6 +44,7 @@ struct Assembly: AssemblyProtocol {
         let view = EditToDoViewController(presenter: presenter)
         
         presenter.view = view
+        presenter.listener = listener
         
         return view
     }

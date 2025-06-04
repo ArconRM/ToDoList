@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class MainPresenter: MainPresenterProtocol {
+final class MainPresenter: MainPresenterProtocol, ToDoUpdateListener {
     
     private let interactor: MainInteractorProtocol
     private let router: MainRouterProtocol
@@ -79,6 +79,10 @@ final class MainPresenter: MainPresenterProtocol {
     }
     
     func showEditToDo(toDo: ToDo) {
-        router.showEditToDoView(toDo: toDo)
+        router.showEditToDoView(toDo: toDo, listener: self)
+    }
+    
+    func didUpdateToDo() {
+        fetchAllToDos()
     }
 }

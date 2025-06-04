@@ -11,6 +11,7 @@ final class EditToDoPresenter: EditToDoPresenterProtocol {
     
     private let interactor: EditToDoInteractorProtocol
     weak var view: EditToDoViewProtocol?
+    weak var listener: ToDoUpdateListener?
     var toDo: ToDo
     
     init(interactor: EditToDoInteractorProtocol, toDo: ToDo) {
@@ -28,7 +29,7 @@ final class EditToDoPresenter: EditToDoPresenterProtocol {
         
         interactor.updateToDo(toDo: toDo) { [weak self] result in
             switch result {
-            case .success(let toDos):
+            case .success():
                 break
             case .failure(let failure):
                 DispatchQueue.main.async {
@@ -36,5 +37,9 @@ final class EditToDoPresenter: EditToDoPresenterProtocol {
                 }
             }
         }
+    }
+    
+    func viewWillDisappear() {
+        listener?.didUpdateToDo()
     }
 }

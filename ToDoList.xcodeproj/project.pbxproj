@@ -62,6 +62,7 @@
 		16A0CA582DEE036100C3B858 /* TextViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0CA572DEE036100C3B858 /* TextViewFactory.swift */; };
 		16A0CA5A2DEE07F900C3B858 /* ToDoTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0CA592DEE07F900C3B858 /* ToDoTableViewCellDelegate.swift */; };
 		16A0CA622DEE2CBB00C3B858 /* UILabel+Strikethrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A0CA602DEE2CBB00C3B858 /* UILabel+Strikethrough.swift */; };
+		16FFDD6C2DF0E3E3004301B2 /* ToDoUpdateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FFDD6B2DF0E3E3004301B2 /* ToDoUpdateListener.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,7 @@
 		16A0CA572DEE036100C3B858 /* TextViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewFactory.swift; sourceTree = "<group>"; };
 		16A0CA592DEE07F900C3B858 /* ToDoTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		16A0CA602DEE2CBB00C3B858 /* UILabel+Strikethrough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Strikethrough.swift"; sourceTree = "<group>"; };
+		16FFDD6B2DF0E3E3004301B2 /* ToDoUpdateListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoUpdateListener.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,6 +432,7 @@
 			children = (
 				169D89D92DEDA4FE006CBEF9 /* ToDoTableViewDelegate.swift */,
 				16A0CA592DEE07F900C3B858 /* ToDoTableViewCellDelegate.swift */,
+				16FFDD6B2DF0E3E3004301B2 /* ToDoUpdateListener.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 				16A0CA542DEDFE2100C3B858 /* EditToDoViewController.swift in Sources */,
 				169D89B62DED9388006CBEF9 /* ToDoNetworkService.swift in Sources */,
 				169D89C22DED98B4006CBEF9 /* MainInteractorProtocol.swift in Sources */,
+				16FFDD6C2DF0E3E3004301B2 /* ToDoUpdateListener.swift in Sources */,
 				169D89C02DED97B8006CBEF9 /* MainPresenterProtocol.swift in Sources */,
 				16A0CA3D2DEDE46400C3B858 /* ToDoModel.xcdatamodeld in Sources */,
 				169D89D42DEDA0EB006CBEF9 /* LabelFactory.swift in Sources */,

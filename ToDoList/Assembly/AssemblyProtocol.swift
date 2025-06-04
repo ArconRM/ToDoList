@@ -10,5 +10,5 @@ import UIKit
 
 protocol AssemblyProtocol {
     func buildMainViewController(navigationController: UINavigationController) -> MainViewController
-    func buildEditToDoViewController(toDo: ToDo) -> EditToDoViewController
+    func buildEditToDoViewController(toDo: ToDo, listener: ToDoUpdateListener) -> EditToDoViewController
 }

@@ -18,8 +18,8 @@ struct MainRouter: MainRouterProtocol {
         self.assembly = assembly
     }
     
-    func showEditToDoView(toDo: ToDo) {
-        let editToDoViewController = assembly.buildEditToDoViewController(toDo: toDo)
+    func showEditToDoView(toDo: ToDo, listener: ToDoUpdateListener) {
+        let editToDoViewController = assembly.buildEditToDoViewController(toDo: toDo, listener: listener)
         navigationController?.pushViewController(editToDoViewController, animated: true)
     }
 }

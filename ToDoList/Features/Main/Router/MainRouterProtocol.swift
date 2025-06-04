@@ -8,5 +8,5 @@
 import Foundation
 
 protocol MainRouterProtocol {
-    func showEditToDoView(toDo: ToDo)
+    func showEditToDoView(toDo: ToDo, listener: ToDoUpdateListener)
 }

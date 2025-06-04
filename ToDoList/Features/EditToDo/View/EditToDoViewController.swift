@@ -131,11 +131,3 @@ extension EditToDoViewController: UITextViewDelegate {
         }
     }
 }
-
-// MARK: - Preview
-@available(iOS 17, *)
-#Preview {
-    let assembly = AssemblyMock()
-    let view = assembly.buildEditToDoViewController(toDo: ToDo.mocks.first!)
-    return view
-}

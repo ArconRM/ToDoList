@@ -150,7 +150,7 @@ final class MainViewController: UIViewController, MainViewProtocol {
         toDoTableView.reloadData()
         toDoTableView.layoutIfNeeded()
         
-        toolbarLabel.text = "\(toDos.count) задач"
+        toolbarLabel.text = "Задач: \(toDos.count)"
     }
 }
 
@@ -167,7 +167,7 @@ extension MainViewController: UISearchResultsUpdating {
             
             DispatchQueue.main.async {
                 self.toDoTableView.reloadData()
-                self.toolbarLabel.text = "\(count) задач"
+                self.toolbarLabel.text = "Задач: \(count)"
                 
                 UIView.animate(withDuration: 0.2) {
                     self.toDoTableView.layoutIfNeeded()
