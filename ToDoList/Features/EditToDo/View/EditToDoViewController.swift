@@ -90,6 +90,8 @@ final class EditToDoViewController: UIViewController, EditToDoViewProtocol {
         titleTextView.text = item.title
         dateLabel.text = item.dateCreated.customFormatted()
         descriptionTextView.text = item.description
+        
+        view.layoutIfNeeded()
 
         updateTextViewHeight(titleTextView, heightConstraint: titleTextViewHeightConstraint)
         updateTextViewHeight(descriptionTextView, heightConstraint: descriptionTextViewHeightConstraint)
