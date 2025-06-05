@@ -14,10 +14,6 @@ final class EditToDoInteractor: EditToDoInteractorProtocol {
         self.toDoPersistenceManager = toDoPersistenceManager
     }
 
-    func updateToDo(toDo: ToDo) throws {
-        try toDoPersistenceManager.updateToDo(toDo)
-    }
-
     func updateToDo(toDo: ToDo, completion: @escaping (Result<Void, any Error>) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async {
             do {
