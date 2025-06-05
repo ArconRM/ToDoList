@@ -200,7 +200,7 @@ extension MainViewController: ToDoTableViewCellDelegate {
 
         let yesAction = UIAlertAction(
             title: "Да",
-            style: .destructive,
+            style: .destructive
         ) { [weak self] _ in
             guard let indexPath = self?.toDoTableView.indexPath(for: cell),
                   let toDo = self?.toDoTableViewDelegate?.filteredItems[indexPath.section] else { return }
