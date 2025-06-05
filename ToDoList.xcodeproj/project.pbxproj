@@ -499,7 +499,6 @@
 				169D89682DEC500D006CBEF9 /* Sources */,
 				169D89692DEC500D006CBEF9 /* Frameworks */,
 				169D896A2DEC500D006CBEF9 /* Resources */,
-				169D89932DEC56B9006CBEF9 /* SwiftLint Script */,
 			);
 			buildRules = (
 			);
@@ -573,27 +572,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		169D89932DEC56B9006CBEF9 /* SwiftLint Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "SwiftLint Script";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if command -v ${PODS_ROOT}/SwiftLint/swiftlint >/dev/null 2>&1\nthen\n    ${PODS_ROOT}/SwiftLint/swiftlint\n    ${PODS_ROOT}/SwiftLint/swiftlint --fix\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		168CE7ED2DEF70BD00F1343D /* Sources */ = {
