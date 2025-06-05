@@ -149,6 +149,8 @@ final class MainViewController: UIViewController, MainViewProtocol {
         toDoTableView.layoutIfNeeded()
 
         toolbarLabel.text = "Задач: \(toDos.count)"
+        
+        updateSearchResults(for: searchController)
     }
 }
 
