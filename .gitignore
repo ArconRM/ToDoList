@@ -9,4 +9,5 @@ xcuserdata/
 xcshareddata/
 .build/
 .swiftpm/xcode/xcuserdata/
+Package.resolved
 /Sources
